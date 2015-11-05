@@ -1,0 +1,31 @@
+<header>
+  
+  <nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+    </button>
+    <%= link_to root_path, class: 'navbar-brand' do %>
+            <%= image_tag "logo.png", title: "Logo", class: "logo" %>
+    <% end %>
+  </div>
+ 
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Buscar">
+      </div>
+      <button type="submit" class="btn btn-default">Ir<span class="glyphicon glyphicon-envelope"></span>
+      </button>
+    </form>
+ 
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %></li>
+        <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+      <% else %>
+        <li><%= link_to "Registrarse", new_user_registration_path, :class => 'navbar-link' %></li>
+        <li><%= link_to 'Iniciar sesión', new_user_session_path, :class => 'navbar-link' %></li>
+      <% end %>
+    </ul>
+  </div>
+  </nav>
