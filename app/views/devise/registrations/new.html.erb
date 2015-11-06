@@ -1,29 +1,74 @@
-<h2>Sign up</h2>
+
+<h2 class="tipoRegistro">Registrarse en CouchInn</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="field tipoRegistro">
+    <%= f.label :nombre, "Nombre" %><br />
+    <%= f.text_field :nombre, placeholder: 'Ingrese su nombre' %>
+  </div>
+
+  <div class="field tipoRegistro">
+    <%= f.label :apellido, "Apellido" %><br />
+    <%= f.text_field :apellido, placeholder: 'Ingrese su apellido' %>
+  </div>
+
+  <div class="field tipoRegistro">
+    <%= f.label :nombreUsuario, "Nombre de Usuario" %><br />
+    <%= f.text_field :nombreUsuario, placeholder: 'Ingrese su nombre de usuario' %>
+  </div>
+  
+
+  <div class="field tipoRegistro">
+    <%= f.label :email, "Correo" %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field tipoRegistro"> 
+    <%= f.label :fechaNac, "Fecha de Nacimiento" %><br />
+    <%= f.date_select :fechaNac, :order => [:day, :month, :year], :start_year => 1900, :end_year => 1997 %>
+  </div>  
+
+  <div class="field tipoRegistro">
+    <%= f.label :nacionalidad, "Nacionalidad" %><br />
+    <%= f.text_field :nacionalidad, placeholder: 'Ingrese su nacionalidad' %>
+  </div>
+
+  <div class="tipoRegistro">
+    <%= f.label :masculino, "Sexo" %><br />
+    <%= f.radio_button :masculino, 'masculino', :masculino => true %> Masculino
+  </div>
+  <div class="tipoRegistro">
+    <%= f.radio_button :masculino, 'masculino', :masculino => false %> Femenino
+  </div>
+
+  <div class="field tipoRegistro">
+    <%= f.label :password , "Contraseña"%>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div class="field tipoRegistro">
+    <%= f.label :password_confirmation , "Confirmar contraseña" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="tipoRegistro">
+    <%= f.check_box :esPremium, {}, true %> <%= f.label :esPremium, "Cuenta Premium" %> 
+  </div>
+
+  <% if :esPremium == true %>
+    <h6> Usted es premium </h6>
+  <% end %>
+
+  <div class="actions tipoRegistro">
+    <%= f.submit "Registrarme" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="tipoRegistro">
+    <%= render "devise/shared/links" %>
+  </div>
