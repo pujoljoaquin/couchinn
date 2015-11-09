@@ -1,9 +1,9 @@
-class CreateDatosPremia < ActiveRecord::Migration
+class CreateCuentapremia < ActiveRecord::Migration
   def change
-    create_table :datos_premia do |t|
+    create_table :cuentapremia do |t|
       t.string :banco
       t.string :tarjeta
-      t.integer :numeroTarjeta
+      t.string :numeroTarjeta
       t.integer :codigoSeguridad
       t.integer :mesVencimiento
       t.integer :yearVencimiento
