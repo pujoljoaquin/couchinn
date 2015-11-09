@@ -3,5 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates_uniqueness_of :nombreUsuario
+  validates_presence_of :nombre, :apellido, :nacimiento, :nacionalidad, :masculino, :nombreUsuario, :message => "Dato obligatorio"
+  validates_uniqueness_of :nombreUsuario, :message => "El nombre de usuario ya existe!" 
 end

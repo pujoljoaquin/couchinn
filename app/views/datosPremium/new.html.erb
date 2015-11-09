@@ -1,0 +1,19 @@
+<%= form_for(@datosPremium) do |d| %>
+
+  <div class="field tipoRegistro">
+    <%= f.label :banco, "Banco" %><br />
+    <%= f.select :banco, ['Banco Patagonia', 'American Express', 'Banco Ciudad', 'Credicoop', 'Banco Galicia', 'Banco Itaú', 'Banco Macro', 'HSBC', 'CitiBank' ] %>
+  </div>
+
+  <div class="field tipoRegistro">
+    <%= f.label :tarjeta, "Tipo de Tarjeta" %><br />
+    <%= f.select :tarjeta, ['Visa', 'Mastercard', 'Credencial', 'American Express' ] %>
+  </div>
+
+  <div class="field tipoRegistro">
+    <%= f.label :numeroTarjeta, "Número de tarjeta" %><br />
+    <%= f.integer :numeroTarjeta, placeholder: "Ingrese su número de tarjeta" %>
+  </div>
+
+
+</form>

@@ -5,6 +5,6 @@ class AddColumnsToUsers < ActiveRecord::Migration
     add_column :users, :nombreUsuario, :string
     add_column :users, :fechaNac, :datetime
     add_column :users, :nacionalidad, :string
-    add_column :users, :esPremium, :boolean
+    add_column :users, :esPremium, :boolean, default: false
   end
 end

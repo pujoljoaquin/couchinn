@@ -57,5 +57,5 @@ en:
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibió al %{resource} que se registrara:"
-        other: "%{count} errores prohibieron al %{resource} que se registrara:"
+        one: "1 error no ha permitido que se registrara:"
+        other: "%{count} errores no han permitido que se registrara:"

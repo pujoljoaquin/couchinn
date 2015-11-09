@@ -26,8 +26,8 @@
   </div>
 
   <div class="field tipoRegistro"> 
-    <%= f.label :fechaNac, "Fecha de Nacimiento" %><br />
-    <%= f.date_select :fechaNac, :order => [:day, :month, :year], :start_year => 1900, :end_year => 1997 %>
+    <%= f.label :nacimiento, "Fecha de Nacimiento" %><br /> 
+    <%= f.date_select :nacimiento, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year %>
   </div>  
 
   <div class="field tipoRegistro">
@@ -37,10 +37,10 @@
 
   <div class="tipoRegistro">
     <%= f.label :masculino, "Sexo" %><br />
-    <%= f.radio_button :masculino, 'masculino', :masculino => true %> Masculino
+    <%= f.radio_button :masculino, true %> Masculino
   </div>
   <div class="tipoRegistro">
-    <%= f.radio_button :masculino, 'masculino', :masculino => false %> Femenino
+    <%= f.radio_button :masculino, false, :checked => true %> Femenino
   </div>
 
   <div class="field tipoRegistro">
@@ -57,11 +57,16 @@
   </div>
 
   <div class="tipoRegistro">
-    <%= f.check_box :esPremium, {}, true %> <%= f.label :esPremium, "Cuenta Premium" %> 
+    <%= f.label :esPremium, "¿Quiere ser cuenta Premium?" %><br />
+    <%= f.radio_button :esPremium, true %> Sí
+  </div>
+  <div class="tipoRegistro">
+    <%= f.radio_button :esPremium, false, :checked => true %> No
   </div>
 
-  <% if :esPremium == true %>
-    <h6> Usted es premium </h6>
+  <% seMuestra = (:esPremium == false) ? '': 'hidden' %>
+  <% if (:esPremium== false) %>
+    <h7>NO ES PREMIUM</h7>
   <% end %>
 
   <div class="actions tipoRegistro">
