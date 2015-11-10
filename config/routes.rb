@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  get 'couches/index'
+  resources :couches
   #devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   root 'main#index'
