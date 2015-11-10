@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-  	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nombre, :apellido, :email, :nombreUsuario, :nacimiento, :nacionalidad, :masculino, :password, :password_confirmation, :esPremium) }
+  	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nombre, :apellido, :email, :nombreUsuario, :nacimiento, :nacionalidad, :masculino, :password, :password_confirmation, :esPremium, :foto) }
   end
 
   #def after_sign_in_path_for(resource) 

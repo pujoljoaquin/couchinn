@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 20151110014443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "adminpack"
+
+  create_table "couch_types", force: true do |t|
+    t.string   "nombre"
+    t.boolean  "activo",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "couches", force: true do |t|
     t.string   "nombre"
@@ -67,6 +75,8 @@ ActiveRecord::Schema.define(version: 20151110014443) do
     t.string   "datetime"
     t.date     "fechaNacimiento"
     t.time     "nacimiento"
+    t.integer  "puntaje"
+    t.string   "foto"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,0 +1,37 @@
+<h2 class="tipoRegistro">Registrar datos para ser Premium </h2>
+
+<%= form_tag '/serPremium' do %>
+
+	<div class="field tipoRegistro">
+	<%= label_tag :banco, "Banco" %>
+	<%= select_tag("priority", options_for_select([['Banco Patagonia', '1'],
+                 ['American Express', '2'],['Banco Ciudad','3'],['Banco Credicoop','4'],['Banco Galicia','5'],['Banco Itaú','6'],['Banco Macro','7'],['Banco HSBC','8'],['CitiBank','9']], '9')) %>
+	</div>
+
+	<div class="field tipoRegistro">
+	<%= label_tag :tarjeta, "Tarjeta" %>
+	<%= select_tag("priority", options_for_select([['Visa', '1'],
+                 ['Mastercard', '2'],['Credencial','3'],['American Express','4']], '4')) %>
+	</div>
+
+	<div class="field tipoRegistro">
+	<%= label_tag :numeroTarjeta, "Numero de la tarjeta" %>
+	<%= text_field_tag :numeroTarjeta, "", :required => "required", :maxlength => 16, :size => 16 %>
+	</div>
+
+	<div class="field tipoRegistro">
+	<%= label_tag :codigoSeguridad, "Codigo de seguridad" %>
+	<%= password_field_tag :codigoSeguridad, "", :required => "required", :maxlength => 4, :size => 4 %>
+	</div>
+
+	<div class="field tipoRegistro">
+	<%= label_tag :fechaVencimiento, "Fecha de vencimiento" %>
+	<%= month_field_tag :fechaVencimiento, :required => "required" %>
+	</div>
+
+	<div class="field tipoRegistro">
+		<%= submit_tag("Enviar Datos") %>
+	</div>
+
+<% end %>
+
