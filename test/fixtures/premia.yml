@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  banco: MyString
+  tipoTarjeta: MyString
+  numeroTarjeta: 1
+  codigoSeguridad: 1
+  mesVencimiento: 1
+  añoVencimiento: 1
+
+two:
+  banco: MyString
+  tipoTarjeta: MyString
+  numeroTarjeta: 1
+  codigoSeguridad: 1
+  mesVencimiento: 1
+  añoVencimiento: 1

@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get  'couh_types/index'
   devise_for :users
   root 'main#index'
   resources :configurations
   resources :couch_types
+=======
+  get 'couches/index'
+  resources :couches
+  #devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  root 'main#index'
+  get '/couchinn', to: 'main#index'
+  get '/serPremium', to: 'premium#index'
+
+>>>>>>> 1275cf3f9cbe1ea3df816402e16f2e2c1f25a07e
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
