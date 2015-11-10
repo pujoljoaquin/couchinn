@@ -1,0 +1,2 @@
+module CouchTypeControllerHelper
+end

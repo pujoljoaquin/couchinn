@@ -1,0 +1,16 @@
+<div class= "container">
+	<h1> Cambiar el nombre del tipo de Couch</h1>
+
+	<%= form_for(@couch_type) do |f| %>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<%= f.label :nombre, 'Nombre',class: 'contol-label'%>
+			</div>
+			<div class="col-md-4 col-md-offset-4">
+				<%= f.textfield :nombre, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nuevo nombre del tipo de Couch'%>
+			</div>
+		</div>
+		<%= f.submit "Cambiar nombre", class: 'btn btn-primary' %>			
+		<%= link_to "Cancelar", couch_types_path, class: 'btn btn-info btn-sm' %>
+	<%end%>
+</div>
