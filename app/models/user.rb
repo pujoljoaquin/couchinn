@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :nombre, :apellido, :nacimiento, :nacionalidad, :masculino, :nombreUsuario, :message => "Dato obligatorio"
   validates_uniqueness_of :nombreUsuario, :message => "El nombre de usuario ya existe!" 
+  has_one :cuentapremiums #, dependent: :destroy
 end

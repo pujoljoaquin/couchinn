@@ -44,6 +44,11 @@
   </div>
 
   <div class="field tipoRegistro">
+    <%= f.label :foto, "Foto de perfil" %><br />
+    <%= f.url_field :foto, placeholder: 'Debe ser un link a un URL en el que se encuentra su foto' %>
+  </div>
+
+  <div class="field tipoRegistro">
     <%= f.label :password , "Contraseña"%>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
