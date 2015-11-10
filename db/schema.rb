@@ -11,11 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20151109113202) do
-=======
+
 ActiveRecord::Schema.define(version: 20151110014443) do
->>>>>>> 1275cf3f9cbe1ea3df816402e16f2e2c1f25a07e
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +25,6 @@ ActiveRecord::Schema.define(version: 20151110014443) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   add_index "controllers", ["email"], name: "index_controllers_on_email", unique: true, using: :btree
   add_index "controllers", ["reset_password_token"], name: "index_controllers_on_reset_password_token", unique: true, using: :btree
 
@@ -69,7 +64,6 @@ ActiveRecord::Schema.define(version: 20151110014443) do
     t.datetime "updated_at"
   end
 
->>>>>>> 1275cf3f9cbe1ea3df816402e16f2e2c1f25a07e
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
