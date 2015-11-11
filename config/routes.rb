@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :couch_types
   #devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
-  root 'main#index'
+  root 'couches#index'
   get '/couchinn', to: 'main#index'
   get '/serPremium', to: 'premium#index'
 

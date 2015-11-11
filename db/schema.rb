@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110014443) do
+ActiveRecord::Schema.define(version: 20151111114353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20151110014443) do
     t.integer  "puntuacion"
     t.boolean  "disponibilidad"
     t.integer  "capacidad"
-    t.integer  "usuario_id"
+    t.integer  "user_id"
     t.string   "imagen",         default: "http://static.tumblr.com/5473d74e35693e4a261933b04b13080e/vhrhomj/eAknuqhz5/tumblr_static_7fu7jer965gk4w4cok4ooo4cw_2048_v2.png"
-    t.string   "tipo"
+    t.string   "couch_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,18 +49,18 @@ ActiveRecord::Schema.define(version: 20151110014443) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "",                                                                                              null: false
+    t.string   "encrypted_password",     default: "",                                                                                              null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,                                                                                               null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                                                                                                       null: false
+    t.datetime "updated_at",                                                                                                                       null: false
     t.string   "nombre"
     t.string   "apellido"
     t.string   "nombreUsuario"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20151110014443) do
     t.date     "fechaNacimiento"
     t.time     "nacimiento"
     t.integer  "puntaje"
-    t.string   "foto"
+    t.string   "foto",                   default: "http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-green-icon.png"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
