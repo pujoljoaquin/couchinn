@@ -11,16 +11,16 @@ def validarDatos
 	#fechaSeleccionada = Time.new(params[:user][:fechaNac].year, params[:user][:fechaNac].month, params[:user][:fechaNac].day).to_date
 	#fechaUsuario = params[:user][:nacimiento]
 	#fechaMenor = Time.new(Time.now.year - 18, Time.now.month, Time.now.day).to_date
-	fechaMenor = DateTime.new(Time.now.year - 18, Time.now.month, Time.now.day)
-	if(params[:user][:fechaNac] > fechaMenor)
-		esMenor = true
-	end
+	#fechaMenor = DateTime.new(Time.now.year - 18, Time.now.month, Time.now.day)
+	#if(params[:user][:fechaNac] > fechaMenor)
+#		esMenor = true
+	#end
 	#if(fechaSeleccionada > fechaMenor)
 	#	esMenor = true
 	#end
-	if(esMenor == true)
-		redirect_to couchinn_path, notice: "Debe tener al menos 18 años para poder registrarse"
-	end
+	#if(esMenor == true)
+	#	redirect_to couchinn_path, notice: "Debe tener al menos 18 años para poder registrarse"
+	#end
 	#else CUENTA PREMIUM
 	if(params[:user][:esPremium] == true)
 		#redirect_to serPremium_path
