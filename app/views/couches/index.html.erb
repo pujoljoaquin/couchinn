@@ -1,5 +1,6 @@
 <body>
-<h1 style="color:#6B8E23;" class="text-center"> <strong>Lista de Couchs</strong></h1>
+  background-color:black
+<h1 style="color:#6B8E23;" class="text-center"> <strong>Lista de Couches</strong></h1>
 <p></p>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -17,9 +18,12 @@
      <p> <%= couch.descripcion %> </p>
      <p> Capacidad: <%= couch.capacidad %></p>
      <p> Puntuacion: <%= couch.puntuacion %></p>
+     <% if user_signed_in? then %>
      <button class="btn btn-success btn-xs" type="button">
       <%= link_to 'Ver más', couch_path(couch.id), class: "btn btn-success btn-xs" %>
+      <% end %>
       </button>
+      
    </div>
 </div>
 <% end %>

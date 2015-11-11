@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
+
+  get  'couh_types/index'
   get 'couches/index'
   resources :couches
+  resources :configurations
+  resources :couch_types
   #devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
-  root 'main#index'
+  root 'couches#index'
   get '/couchinn', to: 'main#index'
   #get '/serPremium', to: 'premium#index'
   resources :premiums
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

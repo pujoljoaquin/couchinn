@@ -1,0 +1,43 @@
+
+<table class = "table center">
+	<tr>
+		<th> Tipo de Couch </th>
+		<th> Activo </th>
+	</tr>
+	<% CouchType.all.each do |tipo| %>
+		
+		<%  if (tipo.activo == true) %>
+			<tr> 
+
+				<td> <%= tipo.nombre %> </td>
+				<td> <%= (tipo.activo) ? 'Si' : 'No' %> </td>
+				<td>
+					<p>
+					<%= link_to "Cambiar nombre", edit_couch_type_path(tipo), class: 'btn btn-success btn-sm' %>   
+					<%= link_to "Desactivar", tipo, method: :destroy, class: 'btn btn-success btn-sm' %>
+					</p>
+				</td>
+			</tr>
+
+		<%else%>
+			
+			<tr class="active"> 
+
+				<td> <%= tipo.nombre %> </td>
+				<td> <%= (tipo.activo) ? 'Si' : 'No' %> </td>
+				<td>
+					<p>
+					<%= link_to "Cambiar nombre", edit_couch_type_path(tipo), class: 'btn btn-success btn-sm' %>   
+					<%= link_to "Activar", tipo, method: :update, class: 'btn btn-success btn-sm' %>
+					</p>
+				</td>
+
+			</tr>
+		<%end%>
+	<% end %>
+	<% if CouchType.count == 0 %>
+		<tr> <td colspan="3"> No hay tipos de Couch </td> </tr>
+	<% end %>
+	<tr><td class="center-block" colspan="3"><%= link_to "Atrás", configurations_path, class: 'btn btn-info btn-sm' %></td></tr>
+
+</table>
