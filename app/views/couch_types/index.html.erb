@@ -1,5 +1,5 @@
 
-<table class = "table">
+<table class = "table center">
 	<tr>
 		<th> Tipo de Couch </th>
 		<th> Activo </th>
@@ -28,7 +28,7 @@
 				<td>
 					<p>
 					<%= link_to "Cambiar nombre", edit_couch_type_path(tipo), class: 'btn btn-success btn-sm' %>   
-					<%= link_to "Activar", tipo, method: :upload,class: 'btn btn-success btn-sm' %>
+					<%= link_to "Activar", tipo, method: :update, class: 'btn btn-success btn-sm' %>
 					</p>
 				</td>
 
