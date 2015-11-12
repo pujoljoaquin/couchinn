@@ -23,6 +23,7 @@ default: &default
   username: postgres
   password: 39097432
 
+
 development:
   <<: *default
   database: couchinn_development
