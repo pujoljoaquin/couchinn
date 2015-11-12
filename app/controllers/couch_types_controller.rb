@@ -1,5 +1,6 @@
 class CouchTypesController < ApplicationController
-before_action :get_couch_type, only: [:edit, :update, :destroy]
+before_action :get_couch_type, only: [:edit, :update]
+
 
 def get_couch_type
 	@type = CouchType.find(params[:id])
@@ -15,7 +16,7 @@ def create
 end
 
 def update
-	#tipo.activo=true
+	@type.update(params.require(:couch_type).permit(:nombre,:activo))
 	redirect_to couch_types_path
 end
 
@@ -23,11 +24,6 @@ def index
 end
 
 def edit
-end
-
-def destroy
-	tipo.activo=false
-	redirect_to couch_types_path
 end
 
 end

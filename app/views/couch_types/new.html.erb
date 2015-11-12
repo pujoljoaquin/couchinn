@@ -5,14 +5,17 @@
 		
 		
   		<div class="row">	
-  			<div class="col-xs-3">
-          <%= f.label :nombre, 'Nombre', class: 'control-label'%>
-  				<%= f.text_field :nombre, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nombre del tipo de Couch' %>		
+  			<div class="col-md-3 col-md-offset-4" >
+          		<%= f.label :nombre, 'Nombre', class: 'control-label'%>
+  				<%= f.text_field :nombre, required: true, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nombre del tipo de Couch'  %>
+	  			<% if @couch_type.errors.messages[:nombre] && !@couch_type.errors.messages[:nombre].empty? %>
+					<p style="color:red"><strong>"El tipo de Couch ya existe"</p>
+				<% end %>
   			</div>
   		</div>
 <br>
 		<div class="row">
-			<div clas="col-md-3">
+			<div class="col-md-3 col-md-offset-4">
 				<%= f.submit "Aceptar", class: 'btn btn-success' %>
 				<%= link_to "Cancelar", couch_types_path, class: 'btn btn-success' %>
 			</div>

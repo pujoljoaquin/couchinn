@@ -17,8 +17,7 @@
 				<td> <%= (tipo.activo) ? 'Si' : 'No' %> </td>
 				<td>
 					<p>
-					<%= link_to "Cambiar nombre", edit_couch_type_path(tipo), class: 'btn btn-success btn-sm' %>   
-					<%= link_to "Desactivar", tipo, method: :destroy, class: 'btn btn-success btn-sm' %>
+					<%= link_to "Modificar", edit_couch_type_path(tipo), class: 'btn btn-success btn-sm' %>   
 					</p>
 				</td>
 			</tr>
@@ -31,8 +30,7 @@
 				<td> <%= (tipo.activo) ? 'Si' : 'No' %> </td>
 				<td>
 					<p>
-					<%= link_to "Cambiar nombre", edit_couch_type_path(tipo), class: 'btn btn-success btn-sm' %>   
-					<%= link_to "Activar", tipo, method: :update, class: 'btn btn-success btn-sm' %>
+					<%= link_to "Modificar", edit_couch_type_path(tipo), class: 'btn btn-success btn-sm' %>   
 					</p>
 				</td>
 
