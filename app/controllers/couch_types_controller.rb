@@ -12,7 +12,11 @@ end
 
 def create
 	@couch_type = CouchType.create(params.require(:couch_type).permit(:nombre,:activo))
-	redirect_to couch_types_path
+	if @couch_type.errors.empty?
+		redirect_to couch_types_path
+	else
+		redirect_to new_couch_type_path, notice: "El tipo de couch ya existe"
+	end
 end
 
 def update

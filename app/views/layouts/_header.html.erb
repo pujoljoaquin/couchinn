@@ -20,7 +20,7 @@
  
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <%if (current_user.esAdmin == true)%>
+        <%if (current_user.esAdmin)%>
           <li><%= link_to 'Configuración', configurations_path, :class => 'navbar-link' %></li>
         <%end%>
         <% if (current_user.esPremium == false) %>
