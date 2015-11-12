@@ -1,7 +1,10 @@
 <h2 class="tipoRegistro">Iniciar sesión</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
+
+    <p class="notice tipoRegistro" style="color:red"><strong><%= notice %></p>
+    <p class="alert tipoRegistro" style="color:red"><strong><%= alert %></p> 
+
   <div class="field tipoRegistro">
     <%= f.label :email, "Email" %><br />
     <%= f.email_field :email, placeholder: 'Ingrese su email' %>

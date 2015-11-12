@@ -6,5 +6,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :nombre, :apellido, :fechaNac, :nacionalidad, :nombreUsuario, :message => "Dato obligatorio"
   validates_uniqueness_of :nombreUsuario, :message => "El nombre de usuario ya existe!" 
-  has_one :cuentapremiums #, dependent: :destroy
+  validate :validarFecha 
+
+  def validarFecha
+  	fechaMenor = Date.today - 18.years
+  	if (self.fechaNac > fechaMenor)
+  		errors.add(:fechaNac, "Debe ser mayor de 18 años")
+  	end
+  end	
 end
