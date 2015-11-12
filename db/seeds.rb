@@ -19,7 +19,7 @@ if cristina.nil?
 end
 susana = User.find_by(nombre: 'Susana')
 if susana.nil?
-	susana = User.create(nombre:"Susana", fechaNac:(Date.today - 70.years), password:"12345678", password_confirmation: "12345678", apellido:"Gimenez", email:"lasu@hotmail.com", nombreUsuario:"susana", nacionalidad:"Argentina", masculino: false, esPremium:false, foto:"http://www.fundacionkonex.org/img_curriculums/7957b051f25427efbdb3bba77eef11d15be6.jpg")
+	susana = User.create(nombre:"Susana", fechaNac:(Date.today - 70.years), password:"12345678", password_confirmation: "12345678", apellido:"Gimenez", email:"lasu@hotmail.com", nombreUsuario:"susana", nacionalidad:"Argentina", masculino: false, esPremium:false, foto:"http://www.fundacionkonex.org/img_curriculums/7957b051f25427efbdb3bba77eef11d15be6.jpg", esAdmin:true)
 end
 
 puts "Creo los Couch_types"

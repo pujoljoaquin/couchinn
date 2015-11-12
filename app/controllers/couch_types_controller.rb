@@ -1,6 +1,7 @@
 class CouchTypesController < ApplicationController
 before_action :get_couch_type, only: [:edit, :update]
 
+
 def get_couch_type
 	@type = CouchType.find(params[:id])
 end
