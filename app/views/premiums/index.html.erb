@@ -1,6 +1,6 @@
 <h2 class="tipoRegistro">Registrar datos para ser Premium </h2>
 
-<%= form_tag '/serPremium' do %>
+<%= form_tag '/premiums' do %>
 
 	<div class="field tipoRegistro">
 	<%= label_tag :banco, "Banco" %>
@@ -16,7 +16,7 @@
 
 	<div class="field tipoRegistro">
 	<%= label_tag :numeroTarjeta, "Numero de la tarjeta" %>
-	<%= text_field_tag :numeroTarjeta, "", :required => "required", :maxlength => 16, :size => 16 %>
+	<%= number_field_tag :numeroTarjeta, "", :required => "required", :maxlength => 16, :size => 16 %>
 	</div>
 
 	<div class="field tipoRegistro">
@@ -29,8 +29,10 @@
 	<%= month_field_tag :fechaVencimiento, :required => "required" %>
 	</div>
 
+	<p class="tipoRegistro"> Total: $400 </p>
 	<div class="field tipoRegistro">
-		<%= submit_tag("Enviar Datos") %>
+		<%= submit_tag("Pagar") %> 
+		<%= link_to "Cancelar", couches_path, class: 'btn btn-success btn-sm' %>
 	</div>
 
 <% end %>

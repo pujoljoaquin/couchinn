@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :couches, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates_presence_of :nombre, :apellido, :nacimiento, :nacionalidad, :masculino, :nombreUsuario, :message => "Dato obligatorio"
+  validates_presence_of :nombre, :apellido, :fechaNac, :nacionalidad, :nombreUsuario, :message => "Dato obligatorio"
   validates_uniqueness_of :nombreUsuario, :message => "El nombre de usuario ya existe!" 
   has_one :cuentapremiums #, dependent: :destroy
 end

@@ -24,10 +24,12 @@
     <p class="text-left"> <strong>Descripción:</strong> <%= @couch.descripcion %> </p>
     <p class="text-left" > <strong>Capacidad:</strong> <%= @couch.capacidad %></p>
     <p class="text-left" > <strong>Puntuacion: </strong> <%= @couch.puntuacion %> </p>
-    <p class="text-left" > <strong>Tipo de Couch: </strong> @couch.couchtype.nombre </p>
-    <p class="text-left" > <%= image_tag "contacto.png"%>  <strong>Contacto: </strong>con <%= @couch.user.nombre %> </p>
-    <p class = "text-left"><button class="btn btn-success btn-sm" type="button">
-      <%= link_to 'Enviar Solicitud', couches_path, class: "btn-success" %>
+    <p class="text-left" > <strong>Tipo de Couch: </strong> <%= @couch.couch_type.nombre %> </p>
+    <p class="text-left"> <strong>Propietario:</strong> <%= @couch.user.nombre %> <%= @couch.user.apellido%> </p>
+
+    <p class="text-left" > <%= image_tag "contacto.png"%>  <strong>Contacto: </strong><%= @couch.user.email %></p>
+    <p class = "text-left"><button class="btn btn-default btn-sm" type="button">
+      <%= link_to 'Enviar Solicitud', couches_path, class: "btn-default" %>
        </button></p>
   
 

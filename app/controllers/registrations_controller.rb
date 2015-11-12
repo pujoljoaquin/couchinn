@@ -8,17 +8,24 @@ def validarDatos
 	#if(params[:user][:nacionalidad] == "Argentina")
 	#	esMenor = true
 	#end	
-	#fechaSeleccionada = Date.parse(params[:user][:fechaNacimiento])
+	#fechaSeleccionada = Time.new(params[:user][:fechaNac].year, params[:user][:fechaNac].month, params[:user][:fechaNac].day).to_date
 	#fechaUsuario = params[:user][:nacimiento]
-	#fechaMenor = Time.new(Time.now.year - 18, Time.now.month, Time.now.day)
-	#numero_de_dias = (fechaSeleccionada - fechaMenor).to_i
-	#if(params[:user][:nacimiento] > fechaMenor)
+	#fechaMenor = Time.new(Time.now.year - 18, Time.now.month, Time.now.day).to_date
+	#fechaMenor = DateTime.new(Time.now.year - 18, Time.now.month, Time.now.day)
+	#if(params[:user][:fechaNac] > fechaMenor)
+#		esMenor = true
+	#end
+	#if(fechaSeleccionada > fechaMenor)
 	#	esMenor = true
 	#end
 	#if(esMenor == true)
 	#	redirect_to couchinn_path, notice: "Debe tener al menos 18 años para poder registrarse"
 	#end
 	#else CUENTA PREMIUM
+	if(params[:user][:esPremium] == true)
+		#redirect_to serPremium_path
+		redirect_to premiums_path
+	end
 end
 
 end

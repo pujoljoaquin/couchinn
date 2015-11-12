@@ -89,4 +89,4 @@ production:
   #username: couchinn
   #password: <%= ENV['COUCHINN_DATABASE_PASSWORD'] %>
   username: postgres
-  password: Facultad123
+  password: 38835321
