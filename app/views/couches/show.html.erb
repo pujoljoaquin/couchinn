@@ -4,7 +4,7 @@
     <h4> <i> <%= @couch.lugar %></i></small></h4>  
  
   <div class="row">
-  <div class=col-md-6>
+  <div class="col-md-6">
   <img src= <%= @couch.imagen %> class="img-rounded" alt="imagen" style="width:300px;height:250px" >
   <p></p>
    <!-- <p></p>
@@ -18,16 +18,20 @@
   </p> 
 -->
   </div>
-  <div class=col-md-6>
-  <p></p>
+  <div class="col-md-6">
    <p></p>
     <p class="text-left"> <strong>Descripción:</strong> <%= @couch.descripcion %> </p>
     <p class="text-left" > <strong>Capacidad:</strong> <%= @couch.capacidad %></p>
     <p class="text-left" > <strong>Puntuacion: </strong> <%= @couch.puntuacion %> </p>
-    <p class="text-left" > <strong>Tipo de Couch: </strong> @couch.couchtype.nombre </p>
-    <p class="text-left" > <%= image_tag "contacto.png"%>  <strong>Contacto: </strong>con <%= @couch.user.nombre %> </p>
-    <p class = "text-left"><button class="btn btn-success btn-sm" type="button">
-      <%= link_to 'Enviar Solicitud', couches_path, class: "btn-success" %>
+    <p class="text-left" > <strong>Tipo de Couch: </strong> <%= @couch.couch_type.nombre %> </p>
+    <p class="text-left"> <strong>Propietario:</strong> <%= @couch.user.nombre %> <%= @couch.user.apellido%> </p>
+
+    <p class="text-left" > <%= image_tag "contacto.png"%>  <strong>Contacto: </strong><%= @couch.user.email %></p>
+    <p class = "text-left"><button class="btn btn-default btn-sm" type="button">
+      <%= link_to 'Enviar Solicitud', couches_path, class: "btn-default" %>
+       </button>
+     <button class="btn btn-default btn-sm" type="button">
+      <%= link_to 'Atrás', couches_path, class: "btn-default" %>
        </button></p>
   
 

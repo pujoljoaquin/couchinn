@@ -27,8 +27,9 @@
           <img src= <%= current_user.foto %> class = "img-circle" alt="imagen" style="width:50px;height:50px">
         <% end %>
         <li><%= link_to 'Cerrar sesión', destroy_user_session_path %></li>
+        
       <% else %>
-        <li><%= link_to "Registrarse", new_user_registration_path, :class => 'navbar-link' %></li>
+        <li><%= link_to "Registrarse", new_user_registration_path, :class => 'navbar-link'%></li>
         <li><%= link_to 'Iniciar sesión', new_user_session_path, :class => 'navbar-link' %></li>
       <% end %>
     </ul>

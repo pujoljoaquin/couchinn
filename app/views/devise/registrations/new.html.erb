@@ -1,113 +1,119 @@
 
-<h2 class="tipoRegistro">Registrarse en CouchInn</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-  <% if !resource.errors.messages.empty? %>
-    <div class="alert alert-warning">
-      <h4 class="tipoRegistro" style="color:red"><strong>Hay <%=resource.errors.size %> errores</h4>
-    </div>
-  <% end %>
-
-<div class="row">
-  <div class="col-md-6">
-  <div class="field tipoRegistro">
-      <%= f.label :nombre, "Nombre" %><br />
-      <%= f.text_field :nombre, placeholder: 'Ingrese su nombre' %>
-      <% if resource.errors.messages[:nombre] && !resource.errors.messages[:nombre].empty? %>
-        <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
-      <% end %>  
-  </div>
-
-  <div class="field tipoRegistro">
-    <%= f.label :apellido, "Apellido" %><br />
-    <%= f.text_field :apellido, placeholder: 'Ingrese su apellido' %>
-    <% if resource.errors.messages[:apellido] && !resource.errors.messages[:apellido].empty? %>
-        <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
-      <% end %>  
-  </div>
-
-  <div class="field tipoRegistro">
-    <%= f.label :nombreUsuario, "Nombre de Usuario" %><br />
-    <%= f.text_field :nombreUsuario, placeholder: 'Ingrese su nombre de usuario' %>
-    <% if resource.errors.messages[:nombreUsuario] && !resource.errors.messages[:nombreUsuario].empty? %>
-        <p style="color:red"><strong><%= resource.errors.messages[:nombreUsuario].first %></p>
-      <% end %>  
-  </div>
+<h2 style="color:#6B8E23;" class="text-center"> <strong>Registrarse en CouchInn</strong></h2>
+<div class="container">
   
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <% if !resource.errors.messages.empty? %>
+          <div class="alert alert-warning">
+            <h4 class="tipoRegistro" style="color:red"><strong>Hay <%=resource.errors.size %> errores</h4>
+          </div>
+        <% end %>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+          <div class="field tipoRegistro">
+            <%= f.label :nombre, "Nombre" %><br />
+            <%= f.text_field :nombre, placeholder: 'Ingrese su nombre' %>
+            <% if resource.errors.messages[:nombre] && !resource.errors.messages[:nombre].empty? %>
+              <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
+            <% end %>  
+          </div>
 
-  <div class="field tipoRegistro">
-    <%= f.label :email, "Correo" %><br />
-    <%= f.email_field :email, autofocus: true %>
-    <% if resource.errors.messages[:email] && !resource.errors.messages[:email].empty? %>
-        <p style="color:red"><strong><%= resource.errors.messages[:email].first %></p>
-      <% end %>  
-  </div>
+          <div class="field tipoRegistro">
+          <br />  
+            <%= f.label :apellido, "Apellido" %><br />
+            <%= f.text_field :apellido, placeholder: 'Ingrese su apellido' %>
+            <% if resource.errors.messages[:apellido] && !resource.errors.messages[:apellido].empty? %>
+              <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
+            <% end %>  
+          </div>
+  
+          <div class="field tipoRegistro">
+          <br />   
+            <%= f.label :email, "Correo" %><br />
+            <%= f.email_field :email, autofocus: true %>
+            <% if resource.errors.messages[:email] && !resource.errors.messages[:email].empty? %>
+              <p style="color:red"><strong><%= resource.errors.messages[:email].first %></p>
+            <% end %>  
+          </div>
 
-  <div class="field tipoRegistro"> 
-    <%= f.label :fechaNac, "Fecha de Nacimiento" %><br /> 
-    <%= f.date_select :fechaNac, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year %>
-    <% if resource.errors.messages[:fechaNac] && !resource.errors.messages[:fechaNac].empty? %>
-        <p style="color:red"><strong><%= "Debe ser mayor de 18 años!" %></p>
-      <% end %>  
-  </div>  
-  </div>
+          <div class="field tipoRegistro">
+          <br /> 
+            <%= f.label :fechaNac, "Fecha de Nacimiento" %><br /> 
+            <%= f.date_select :fechaNac, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year %>
+            <% if resource.errors.messages[:fechaNac] && !resource.errors.messages[:fechaNac].empty? %>
+              <p style="color:red"><strong><%= "Debe ser mayor de 18 años!" %></p>
+            <% end %>  
+          </div>
 
-  <div class="col-md-6">
-  <div class="field tipoRegistro">
-    <%= f.label :nacionalidad, "Nacionalidad" %><br />
-    <%= f.select :nacionalidad, ['Alemania', 'Argentina', 'Brasil','Canada', 'Chile', 'España', 'Estados Unidos', 'Inglaterra', 'Mexico','Perú' ] %>
-  </div>
+          <div class="field tipoRegistro">
+          <br />
+            <%= f.label :nacionalidad, "Nacionalidad" %><br />
+            <%= f.select :nacionalidad, ['Alemania', 'Argentina', 'Brasil','Canada', 'Chile', 'España', 'Estados Unidos', 'Inglaterra', 'Mexico','Perú' ] %>
+            
+          <div class="field tipoRegistro">
+          <br />
+            <%= f.label :foto, "Foto de perfil (Ingrese URL)" %><br />
+            <%= f.url_field :foto, placeholder: 'Debe ser un link a un URL en el que se encuentra su foto' %>
+          </div>  
+          </div>
+      </div>
 
-  <div class="tipoRegistro">
-    <%= f.label :masculino, "Sexo" %><br />
-    <%= f.radio_button :masculino, true %> Masculino
-  </div>
-  <div class="tipoRegistro">
-    <%= f.radio_button :masculino, false, :checked => true %> Femenino
-  </div>
-  <% if resource.errors.messages[:masculino] && !resource.errors.messages[:masculino].empty? %>
-        <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
-  <% end %>  
+      <div class="col-md-3">
+          <div class="field tipoRegistro">
+            <%= f.label :nombreUsuario, "Nombre de Usuario" %><br />
+            <%= f.text_field :nombreUsuario, placeholder: 'Ingrese su nombre de usuario' %>
+            <% if resource.errors.messages[:nombreUsuario] && !resource.errors.messages[:nombreUsuario].empty? %>
+              <p style="color:red"><strong><%= resource.errors.messages[:nombreUsuario].first %></p>
+            <% end %>  
+          </div>
 
-  <div class="field tipoRegistro">
-    <%= f.label :foto, "Foto de perfil" %><br />
-    <%= f.url_field :foto, placeholder: 'Debe ser un link a un URL en el que se encuentra su foto' %>
-  </div>
+          <div class="field tipoRegistro">
+          <br />
+            <%= f.label :password , "Contraseña"%>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+            <% if resource.errors.messages[:password] && !resource.errors.messages[:password].empty? %>
+              <p style="color:red"><strong><%= "Debe tener como mínimo 8 caracteres" %></p>
+              <% end %>  
+          </div>
 
-  <div class="field tipoRegistro">
-    <%= f.label :password , "Contraseña"%>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if resource.errors.messages[:password] && !resource.errors.messages[:password].empty? %>
-        <p style="color:red"><strong><%= "Debe tener como mínimo 8 caracteres" %></p>
-    <% end %>  
-  </div>
+          <div class="field tipoRegistro">
+          <br />
+            <%= f.label :password_confirmation , "Confirmar contraseña" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <% if resource.errors.messages[:password_confirmation] && !resource.errors.messages[:password_confirmation].empty? %>
+              <p style="color:red"><strong><%= "No coincide" %></p>
+            <% end %>  
+          </div> 
 
-  <div class="field tipoRegistro">
-    <%= f.label :password_confirmation , "Confirmar contraseña" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    <% if resource.errors.messages[:password_confirmation] && !resource.errors.messages[:password_confirmation].empty? %>
-        <p style="color:red"><strong><%= "No coincide" %></p>
-    <% end %>  
-  </div>
-
-  <div class="tipoRegistro">
-    <%= f.label :esPremium, "¿Quiere ser cuenta Premium?" %><br />
-    <%= f.radio_button :esPremium, true %> Sí
-  </div>
-  <div class="tipoRegistro">
-    <%= f.radio_button :esPremium, false, :checked => true %> No
-  </div>
-</div>  
+          <div class="tipoRegistro">
+          <br />
+            <%= f.label :masculino, "Sexo" %><br />
+              <%= f.radio_button :masculino, true %> Masculino
+            <%= f.radio_button :masculino, false, :checked => true %> Femenino
+          </div>
+          <% if resource.errors.messages[:masculino] && !resource.errors.messages[:masculino].empty? %>
+            <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
+          <% end %> 
+            
+          <div class="actions tipoRegistro">
+          <br />
+            <button class="btn btn-default">
+              <% f.submit "Registrarme"%>
+              Registrarme
+            </button>
+        
+            <button class="btn btn-default">
+              <%= link_to 'Atrás', couches_path, class: "btn-default" %>
+            </button>
+          </div>
+      </div>
+      
+    </div>
+  <br />
+  <br />
 </div>
-  <div class="actions tipoRegistro">
-    <%= f.submit "Registrarme" %>
-  </div>
-<% end %>
-
-  <div class="tipoRegistro">
-    <%= render "devise/shared/links" %>
-  </div>
+    
+  <% end %>
