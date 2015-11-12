@@ -1,8 +1,12 @@
-
+<body>
+	<center>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
 <table class = "table center">
 	<tr>
 		<th> Tipo de Couch </th>
 		<th> Activo </th>
+		<th></th>
 	</tr>
 	<% CouchType.all.each do |tipo| %>
 		
@@ -39,3 +43,7 @@
 	<tr><td class="center-block" colspan="3"><%= link_to "Atrás", configurations_path, class: 'btn btn-info btn-sm' %></td></tr>
 
 </table>
+<div>
+	<div>
+	</center>
+</body>

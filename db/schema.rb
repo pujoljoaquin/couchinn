@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111114353) do
+ActiveRecord::Schema.define(version: 20151111175557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "adminpack"
+
 
   create_table "couch_types", force: true do |t|
     t.string   "nombre"
@@ -33,9 +34,10 @@ ActiveRecord::Schema.define(version: 20151111114353) do
     t.integer  "capacidad"
     t.integer  "user_id"
     t.string   "imagen",         default: "http://static.tumblr.com/5473d74e35693e4a261933b04b13080e/vhrhomj/eAknuqhz5/tumblr_static_7fu7jer965gk4w4cok4ooo4cw_2048_v2.png"
-    t.string   "couch_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "couch_type_id"
+    t.boolean  "esPremium"
   end
 
   create_table "cuentapremia", force: true do |t|
