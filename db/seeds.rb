@@ -19,7 +19,11 @@ if cristina.nil?
 end
 susana = User.find_by(nombre: 'Susana')
 if susana.nil?
-	susana = User.create(nombre:"Susana", fechaNac:(Date.today - 70.years), password:"12345678", password_confirmation: "12345678", apellido:"Gimenez", email:"lasu@hotmail.com", nombreUsuario:"susana", nacionalidad:"Argentina", masculino: false, esPremium:false, foto:"http://www.fundacionkonex.org/img_curriculums/7957b051f25427efbdb3bba77eef11d15be6.jpg", esAdmin:true)
+	susana = User.create(nombre:"Susana", fechaNac:(Date.today - 70.years), password:"12345678", password_confirmation: "12345678", apellido:"Gimenez", email:"lasu@hotmail.com", nombreUsuario:"susana", nacionalidad:"Argentina", masculino: false, esPremium:false, foto:"http://www.fundacionkonex.org/img_curriculums/7957b051f25427efbdb3bba77eef11d15be6.jpg")
+end
+admin = User.find_by(nombre: 'Administrador')
+if admin.nil?
+	admin = User.create(nombre:"Administrador", fechaNac:(Date.today - 30.years), password:"12345678", password_confirmation: "12345678", apellido:"Bigbang", email:"admin@hotmail.com", nombreUsuario:"admin", nacionalidad:"Argentina", masculino: true, esPremium:true, esAdmin:true)
 end
 
 puts "Creo los Couch_types"
@@ -31,5 +35,5 @@ cabana = CouchType.find_or_create_by(nombre:"Cabaña", activo:true)
 
 puts "Creo los Couches"
 Couch.find_or_create_by(couch_type:cabana, nombre: 'Casa en el Lago', descripcion: 'Hermosa vista al lago, muy comoda', lugar: 'Cordoba', user:susana, puntuacion: 4, capacidad: 2, disponibilidad: true, esPremium: false, imagen:"http://thumbs.dreamstime.com/t/casa-por-el-lago-8140207.jpg")
-Couch.find_or_create_by(couch_type:casa, nombre: "Choza de Cletus", descripcion: 'Safa, con el plan trabajar re garpa todo, papa', lugar: "Villa 31", user:cletus, puntuacion: 1, capacidad: 10, disponibilidad: true, esPremium: false, imagen: "http://vignette2.wikia.nocookie.net/simpsons/images/4/44/Cletus_and_Children.jpg/revision/latest?cb=20110105211428")
-Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", descripcion: "Donde vive la presi wacho", lugar: "Capital Federal", puntuacion: 5, user:cristina, disponibilidad: false, capacidad: 1, esPremium: true)
+Couch.find_or_create_by(couch_type:casa, nombre: "Choza de Cletus", descripcion: 'Chiquita, especial para juventud que quiera veranear y pasarla bien', lugar: "Villa Gessel", user:cletus, puntuacion: 1, capacidad: 10, disponibilidad: true, esPremium: false, imagen: "http://vignette2.wikia.nocookie.net/simpsons/images/4/44/Cletus_and_Children.jpg/revision/latest?cb=20110105211428")
+Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", descripcion: "Donde vive la presidente de la nación", lugar: "Capital Federal", puntuacion: 5, user:cristina, disponibilidad: false, capacidad: 1, esPremium: true)

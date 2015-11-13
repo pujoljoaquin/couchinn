@@ -21,14 +21,14 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   username: postgres
-  password: 39097432
+  password: Facultad123
 
 
 development:
   <<: *default
   database: couchinn_development
   username: postgres
-  password: 39097432
+  password: Facultad123
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -64,7 +64,7 @@ test:
   <<: *default
   database: couchinn_test
   username: postgres
-  password: 39097432
+  password: Facultad123
 
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -92,4 +92,4 @@ production:
   #username: couchinn
   #password: <%= ENV['COUCHINN_DATABASE_PASSWORD'] %>
   username: postgres
-  password: 39097432
+  password: Facultad123
