@@ -1,12 +1,35 @@
-<body>
+
+
+<div class="row">
+  
+  <div class="col-md-6 col-md-offset-3">
+    <h1> Búsqueda </h1>
+    <%= form_tag couches_path , method: :get do %>
+        <%= label_tag :lugar %>
+        <%= text_field_tag :lugar %>
+        <%= label_tag :capacidad %>
+        <%= number_field_tag :capacidad, nil, within: 1...101 %>
+        <%= label_tag :puntuacion %>
+        <%= number_field_tag :puntuacion, nil, within: 1...6 %>   
+    
+
+        <%= submit_tag("Buscar") %> 
+
+     <%end%>
+
+
+  </div>
+
+</div>
+
 <h1 style="color:#6B8E23;" class="text-center"> <strong>Lista de Couches</strong></h1>
 <p></p>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
 <ul class="media-list">
 <li class="media">
-<% couches = Couch.all.prioridades %>
-<% couches.each do |couch| %>
+
+<% @couches.each do |couch| %>
 
   <div class="media"> 
   	<!-- VER href=# entre a y class -->
@@ -19,19 +42,8 @@
         <p> Capacidad: <%= couch.capacidad %></p>
         <p> Puntuacion: <%= couch.puntuacion %></p>
         <% if user_signed_in? then %>
-          <button class="btn btn-success btn-xs" type="button">
-            <%= link_to 'Ver más', couch_path(couch.id), class: "btn btn-success btn-xs" %>
-          </button>
-        <% end %>
-      </div>
-  </div>
-<% end %>
-</li>
-</ul>
-</div>
-</div>
-</body>
-  <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+
+         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
       Ver más
      </button>   
      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
@@ -43,4 +55,12 @@
         </div>
       </div>
     </div>
--->
+      
+        <% end %>
+      </div>
+  </div>
+<% end %>
+</li>
+</ul>
+</div>
+</div>

@@ -24,6 +24,7 @@ default: &default
   password: Facultad123
 
 
+
 development:
   <<: *default
   database: couchinn_development
