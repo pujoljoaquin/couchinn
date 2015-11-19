@@ -11,9 +11,9 @@
         <%= number_field_tag :capacidad, nil, within: 1...101 %>
         <%= label_tag :puntuacion %>
         <%= number_field_tag :puntuacion, nil, within: 1...6 %>   
-    
-
-        <%= submit_tag("Buscar") %> 
+        <%= label_tag :tipo %>
+        <%= select_tag( :couch_type_id, options_for_select(CouchType.all.collect { |c| [ c.nombre, c.id]}), {include_blank: 'Todos'}) %>
+       <%= submit_tag("Buscar") %> 
 
      <%end%>
 

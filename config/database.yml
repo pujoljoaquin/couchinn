@@ -20,16 +20,16 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  username: postgres
   password: Facultad123
 
 
-
+ 
 development:
   <<: *default
   database: couchinn_development
   username: postgres
   password: Facultad123
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

@@ -4,6 +4,7 @@ def show
 end	
 def index
 	@couches = Couch.all.prioridades
+	tipo = params[:couch_type_id]
 	lugar = params[:lugar]
 	capacidad = params[:capacidad]
 	puntuacion = params[:puntuacion]
@@ -16,8 +17,9 @@ def index
 	if puntuacion != ""
 		@couches = @couches.where( "puntuacion >= ?", "#{puntuacion}")
 	end
-
-	
+	if tipo != ""
+		@couches = @couches.where( "couch_type_id = ?", "#{tipo}")
+	end
 
 
 
