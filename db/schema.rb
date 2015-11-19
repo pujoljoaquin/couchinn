@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111175557) do
+ActiveRecord::Schema.define(version: 20151118124918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20151111175557) do
     t.integer  "codigoSeguridad"
     t.integer  "mesVencimiento"
     t.integer  "yearVencimiento"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservas", force: true do |t|
+    t.integer  "couch_id"
+    t.datetime "inicio"
+    t.datetime "fin"
+    t.boolean  "confirmada", default: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -18,11 +18,11 @@
         <p> <%= couch.descripcion %> </p>
         <p> Capacidad: <%= couch.capacidad %></p>
         <p> Puntuacion: <%= couch.puntuacion %></p>
-        <% if user_signed_in? then %>
+        
           <button class="btn btn-success btn-xs" type="button">
             <%= link_to 'Ver más', couch_path(couch.id), class: "btn btn-success btn-xs" %>
           </button>
-        <% end %>
+          
       </div>
   </div>
 <% end %>
