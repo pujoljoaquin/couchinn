@@ -1,39 +1,131 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 style="color:#6B8E23;" class="tipoRegistroCentro">Perfil</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <% if !resource.errors.messages.empty? %>
+          <div class="alert alert-warning">
+            <h4 class="tipoRegistro" style="color:red"><strong>Hay <%= resource.errors.size %> errores</h4>
+          </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+  
+        <div class="field tipoRegistroCentro">
+        <br /> 
+          <%= f.label :nombre %><br />
+          <%= f.text_field :nombre, autofocus: true %>
+          <% if resource.errors.messages[:nombre] && !resource.errors.messages[:nombre].empty? %>
+              <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
+          <% end %>  
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+        <div class="field tipoRegistroCentro">
+        <br /> 
+          <%= f.label :apellido %><br />
+          <%= f.text_field :apellido, autofocus: true %>
+          <% if resource.errors.messages[:apellido] && !resource.errors.messages[:apellido].empty? %>
+              <p style="color:red"><strong><%= "Este es un dato obligatorio" %></p>
+          <% end %>  
+        </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        <div class="field tipoRegistroCentro">
+        <br /> 
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+          <% if resource.errors.messages[:email] && !resource.errors.messages[:email].empty? %>
+              <p style="color:red"><strong><%= resource.errors.messages[:email].first %></p>
+          <% end %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+        <div class="field tipoRegistroCentro">
+        <br /> 
+          <%= f.label :fechaNac, "Fecha de Nacimiento" %><br />
+          <%= f.date_select :fechaNac, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year, autofocus: true %>
+          <% if resource.errors.messages[:fechaNac] && !resource.errors.messages[:fechaNac].empty? %>
+              <p style="color:red"><strong><%= "Debe ser mayor de 18 años!" %></p>
+          <% end %> 
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+        <div class="field tipoRegistroCentro">
+        <br /> 
+          <%= f.label :nacionalidad %><br />
+          <%= f.select :nacionalidad, ['Alemania', 'Argentina', 'Brasil','Canada', 'Chile', 'España', 'Estados Unidos', 'Inglaterra', 'Mexico','Perú' ], autofocus: true %>
+        </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+        <div class="field tipoRegistroCentro">
+        <br /> 
+          <%= f.label :foto, "Foto de perfil (URL)" %><br />
+          <%= f.url_field :foto, autofocus: true %>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+      <div class="col-md-3">
 
-<h3>Cancel my account</h3>
+        <div class="field tipoRegistroCentro">
+        <br />
+          <%= f.label :nombreUsuario, "Nombre de usuario" %><br />
+          <%= f.text_field :nombreUsuario, autofocus: true %>
+          <% if resource.errors.messages[:nombreUsuario] && !resource.errors.messages[:nombreUsuario].empty? %>
+              <p style="color:red"><strong><%= resource.errors.messages[:nombreUsuario].first %></p>
+          <% end %>
+        </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        <div class="field tipoRegistroCentro">
+        <br />
+          <%= f.label :masculino, "Sexo" %>
+          <%= f.radio_button :masculino, true %> Masculino
+          <%= f.radio_button :masculino, false, :checked => !current_user.masculino %> Femenino
+        </div>
 
-<%= link_to "Back", :back %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field tipoRegistroCentro">
+          <%= f.label :password %> <i>(No completar si no se va a modificar)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+          <% if resource.errors.messages[:password] && !resource.errors.messages[:password].empty? %>
+              <p style="color:red"><strong><%= "Debe tener como mínimo 8 caracteres" %></p>
+          <% end %>  
+        </div>
+
+        <div class="field tipoRegistroCentro">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          <% if resource.errors.messages[:password_confirmation] && !resource.errors.messages[:password_confirmation].empty? %>
+              <p style="color:red"><strong><%= "No coincide" %></p>
+          <% end %>
+        </div>
+
+        <div class="field tipoRegistroCentro">
+          <%= f.label :current_password %> <i>(Es necesario para confirmar los cambios realizados)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+          <% if resource.errors.messages[:current_password] && !resource.errors.messages[:current_password].empty? %>
+              <p style="color:red"><strong><%= "Contraseña incorrecta" %></p>
+          <% end %>
+        </div>
+
+        <div class="actions tipoRegistro">
+          <br />
+            <button class="btn btn-default">
+              <% f.submit "Actualizar mi perfil"%>
+              Actualizar mi perfil
+            </button>
+          </div>
+
+        <% end %>
+
+        <div class="tipoRegistroCentro">
+           <button class="btn btn-default">
+              <%= link_to 'Atrás', users_show_path, class: "btn-default" %>
+            </button>
+           <button class="btn btn-default">
+              <%= link_to 'Eliminar mi cuenta', registration_path(resource_name), class: "btn-default", data: { confirm: "Are you sure?" }, method: :delete %>
+            </button>
+         <!-- <%= button_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> -->
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+</div>

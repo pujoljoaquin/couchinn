@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   #devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   root 'couches#index'
+  devise_scope :user do
+    get '/users/show', to: 'registrations#show'
+  end
   get '/couchinn', to: 'main#index'
   #get '/serPremium', to: 'premium#index'
   resources :premiums

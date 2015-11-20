@@ -14,4 +14,14 @@ class User < ActiveRecord::Base
   		errors.add(:fechaNac, "Debe ser mayor de 18 años")
   	end
   end	
+
+  def serPremium
+    self.esPremium = true
+    self.fechaPremium = Time.now
+    couchesUser = self.couches
+    couchesUser.each do |couch|
+      couch.serPremium
+    end
+    self.save
+  end
 end
