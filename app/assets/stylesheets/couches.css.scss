@@ -2,13 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.jumbotron{
-	background-color: white;
-	opacity: 0.5;
-	overflow: hidden;
-	position: relative;	
+.jumbotron {
+	opacity:0.5;
+    position: relative;
+    background-color: #B0B0B0;
+    overflow: hidden;
+}
+.tipoRegistro{
+	text-align: left;
 }
 
 .lista{
 	opacity: 1;
+
 }

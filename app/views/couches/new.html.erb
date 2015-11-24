@@ -1,0 +1,31 @@
+<div class="container">
+	<h1 style="color:#6B8E23;" class="text-center"> Crear un nuevo Couch </h1>
+	<br>
+	<%= form_for @couch do |f| %>
+	
+  		<div class="row">	
+  			<div class="col-md-3 col-md-offset-4" >
+          		<%= f.label :nombre, 'Nombre'%>
+  				<%= f.text_field :nombre, required: true, class: 'form-control', placeholder: 'Ingrese el nombre del Couch'  %>
+  				<%= f.label :descripcion, 'Descripcion'%>
+  				<%= f.text_field :descripcion, required: true, class: 'form-control', placeholder: 'Ingrese descripcion del Couch'  %>
+  				<%= f.label :lugar, 'Lugar'%>
+  				<%= f.text_field :lugar, required: true, class: 'form-control', placeholder: 'Ingrese lugar del Couch'  %>
+  				<%= f.label :capacidad, 'Capacidad'%>
+  				<%= f.number_field :capacidad, required: true, class: 'form-control' %>
+  				<%= f.label :imagen, 'URL de la imagen'%>
+  				<%= f.text_field :imagen, required: true, class: 'form-control', placeholder: 'Ingrese el URL'  %>
+  				<%= f.label :couch_type_id, "Tipo de Couch" %><br />
+            	<%= f.select :couch_type_id, CouchType.all.collect { |c| [ c.nombre, c.id]} %>
+  			</div>
+  		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-4">
+				<%= f.submit "Aceptar", class: 'btn btn-success' %>
+				<%= link_to "Cancelar", couches_path, class: 'btn btn-success' %>
+			</div>
+		</div>
+  	<% end %>	
+   </div>
+</div>

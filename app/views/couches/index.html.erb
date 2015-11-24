@@ -1,11 +1,74 @@
-<body>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3 bgcolor">
-    <h1 style="color:#6B8E23;" class="text-center"> <strong>Lista de Couches</strong></h1>
-    <ul class="media-list">
-    <li class="media">
-    <% couches = Couch.all.prioridades %>
-    <% couches.each do |couch| %>
+<div class="container"> 
+<div class="row"> 
+<div class="jumbotron">
+
+    <h2 style="color:white"> Búsqueda </h2>    
+     <%= form_tag couches_path , method: :get do %>
+
+      <div class="col-md-3">
+
+        <div style:"color:white">
+        <%= label_tag :lugar %>
+        </div>
+        <%= text_field_tag :lugar %>
+       
+        <div style:"color:white" >
+        <br />
+        <%= label_tag :capacidad %>
+        </div>
+        <%= number_field_tag :capacidad, nil, within: 1...101 %>
+
+        <p></p>
+        <%= submit_tag("Buscar") %>
+
+       
+      </div>
+
+      <div class="col-md-3">
+
+        <div style:"color:white" >
+        <%= label_tag :puntuacion %>
+        </div>
+        <%= number_field_tag :puntuacion, nil, within: 1...6 %>   
+
+        <div style:"color:white" >
+        <br />
+        <%= label_tag :tipo %>
+        </div>
+        <%= select_tag( :couch_type_id, options_for_select(CouchType.all.collect { |c| [ c.nombre, c.id]}), {include_blank: 'Todos'}) %>
+
+      </div>
+
+      <div class="col-md-3">
+
+        <div style:"color:white" >
+        <%= label_tag :fecha_ida  %>
+        </div>
+        <%= date_select :ida, :couch, order: [:day, :month, :year], :start_year => Time.now.year , use_month_numbers: true , use_two_digit_numbers: true, :include_blank => true %>
+  
+        <div style:"color:white" >
+        <br />
+        <%= label_tag :fecha_vuelta  %>
+        </div>
+        <%= date_select :vuelta, :couch, order: [:day, :month, :year], :start_year => Time.now.year , use_month_numbers: true , use_two_digit_numbers: true, :include_blank => true %>
+  
+      </div>
+   
+
+     
+     <%end%>
+  </div>
+</div>
+</div>
+
+<h1 style="color:#6B8E23;" class="text-center"> <strong>Lista de Couches</strong></h1>
+<p></p>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+<ul class="media-list">
+<li class="media">
+
+<% @couches.each do |couch| %>
 
   <div class="media"> 
   	<!-- VER href=# entre a y class -->
@@ -16,8 +79,7 @@
         <h4 class="media-heading"><%= couch.nombre %> <small><i> <%= couch.lugar %></i></small></h4>
         <p> <%= couch.descripcion %> </p>
         <p> Capacidad: <%= couch.capacidad %></p>
-        <p> Puntuacion: <%= couch.puntuacion %></p>
-        
+        <p> Puntuacion: <%= couch.puntuacion %></p>        
           <button class="btn btn-success btn-xs" type="button">
             <%= link_to 'Ver más', couch_path(couch.id), class: "btn btn-success btn-xs" %>
           </button>
@@ -31,6 +93,7 @@
 </div>
 </body>
   <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+>>>>>>> 0d46f8b7b336d324fae2a99e1a7bf4f0d91216be
       Ver más
      </button>   
      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
@@ -42,4 +105,4 @@
         </div>
       </div>
     </div>
--->
+      
