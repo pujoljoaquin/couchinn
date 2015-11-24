@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20151119193236) do
     t.datetime "updated_at"
   end
 
+  create_table "reservas", force: true do |t|
+    t.integer  "couch_id"
+    t.datetime "inicio"
+    t.datetime "fin"
+    t.boolean  "confirmada", default: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",                                                                                              null: false
     t.string   "encrypted_password",     default: "",                                                                                              null: false

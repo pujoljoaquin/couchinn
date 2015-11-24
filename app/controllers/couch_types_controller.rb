@@ -21,7 +21,11 @@ end
 
 def update
 	@type.update(params.require(:couch_type).permit(:nombre,:activo))
-	redirect_to couch_types_path
+	if @type.errors.empty?
+		redirect_to couch_types_path
+	else
+		redirect_to edit_couch_type_path, notice: "El tipo de couch ya existe"
+	end
 end
 
 def index

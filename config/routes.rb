@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :couches
   resources :configurations
   resources :couch_types
+  resources :reservas
   #devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   root 'couches#index'

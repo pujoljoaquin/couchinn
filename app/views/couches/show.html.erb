@@ -27,18 +27,17 @@
     <p class="text-left"> <strong>Propietario:</strong> <%= @couch.user.nombre %> <%= @couch.user.apellido%> </p>
 
     <p class="text-left" > <%= image_tag "contacto.png"%>  <strong>Contacto: </strong><%= @couch.user.email %></p>
-    <p class = "text-left"><button class="btn btn-default btn-sm" type="button">
-      <%= link_to 'Enviar Solicitud', couches_path, class: "btn-default" %>
-    </button>
-    <button class="btn btn-default btn-sm" type="button">
-      <%= link_to 'Atrás', couches_path, class: "btn-default" %>
-    </button>
+    <p class = "text-left">
+      <button class="btn btn-default btn-sm" type="button">
+        <%= link_to 'Atrás', couches_path, class: "btn-default" %>
+      </button>  
+      <% if user_signed_in? then %>
+        <button class="btn btn-default btn-sm" type="button">
+          <%= link_to 'Reservar', new_reserva_path, class: "btn-default" %>
+        </button>
+      <%end%>
     </p>
-  
-
     
-    
-  </p> 
 
   </div>
   </div>
