@@ -1,0 +1,62 @@
+<h1 style="color:#6B8E23;" class="tipoRegistroCentro"><%= current_user.nombre %> <%= current_user.apellido %></h2>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+	 		<ul class="media-list">
+	 		<li class="media">
+	 		<div class="media"> 
+	 			<div class="pull-left">
+	 				<img src= <%= current_user.foto %> class = "img-rounded" alt="imagen" style="width:200px;height:200px">
+	 			</div>
+	 			<div class="media-body">
+		 			</br>
+		 			<h4 class="media-heading"><%= current_user.nombreUsuario %> </h4>
+		 			<% edad = Date.today.year - current_user.fechaNac.year - 1 %>  <!-- Por si falta para su mes de Nacimiento -->
+		 			<% if (Date.today.month > current_user.fechaNac.month) || ((current_user.fechaNac.month == Date.today.month) && (Date.today.day >= current_user.fechaNac.day)) %>
+		 				<% edad = Date.today.year - current_user.fechaNac.year %>
+		 			<% end %>
+		 			<p></p>
+		 			<p> <%= edad %> años </p>
+		 			<p> <%= current_user.email %> </p>
+		 			<p> <%= current_user.nacionalidad %> </p>
+		 			<p> Puntuación </p>
+		 			<button class="btn btn-success btn-xs" type="button">
+	            		<%= link_to 'Editar perfil', edit_user_registration_path, class: "btn btn-success btn-xs" %>
+	          		</button>
+	 			</div>
+	 		</div>
+		 	</li>
+	 		</ul>
+   		</div>
+
+   		<div class="col-md-6">
+	 		<h3 class="media-heading" style="color:#6B8E23;"> Mis Couches </h2>
+	 		<% if !@couchesUser %>
+	 			<p>Usted no tiene couches!</p>
+	 		<% else %>
+	 			<% @couchesUser.each do |couch| %>
+	 				<div class="media"> 
+      					<div class="pull-left">
+   	  						<img class="img-rounded" class="media-object" src= <%= couch.imagen %>  alt="imagen" style="width:120px;height:120px" >
+      					</div>
+      					<div class="media-body">
+        					<h4 class="media-heading"><%= couch.nombre %> <small><i> <%= couch.lugar %></i></small></h4>
+        					<p> Puntuacion: <%= couch.puntuacion %></p>
+        					<button class="btn btn-success btn-xs" type="button">
+            					<%= link_to 'Ver couch', couch_path(couch.id), class: "btn btn-success btn-xs" %>
+         					</button>
+         					<button class="btn btn-success btn-xs" type="button">
+            					<%= link_to 'Modificar couch', couch_path(couch.id), class: "btn btn-success btn-xs" %>
+          					</button>
+          					<p></p>
+          					<button class="btn btn-success btn-xs" type="button">
+            					<%= link_to "Eliminar couch", couch, method: :delete, class: "btn btn-success btn-xs" %>
+         					</button>
+   						</div>
+   					</div>
+   				<% end %>
+   			<% end %>
+   		</div>
+   </div>
+</div>

@@ -43,3 +43,8 @@ def self.free_couches(tipo, lugar, capacidad, puntuacion, ida, vuelta)
     end
   end
   end
+def serPremium
+	self.esPremium = true
+	self.save
+end
+end

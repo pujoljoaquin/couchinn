@@ -1,7 +1,9 @@
 class CouchesController < ApplicationController
+
 def show
 	@couch = Couch.find(params[:id])
 end	
+
 def index
 		
 	tipo = params[:couch_type_id]
@@ -61,4 +63,8 @@ def create
 	end
 end
 
+def destroy
+	couch = Couch.find(params[:id])
+	couch.destroy
+	redirect_to users_show_path
 end
