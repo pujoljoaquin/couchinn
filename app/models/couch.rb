@@ -41,8 +41,8 @@ def self.free_couches(tipo, lugar, capacidad, puntuacion, ida, vuelta)
     c.each do |couch|
       result << couch if couch.is_free?(ida, vuelta) # Agregamos el hospedaje si está libre
     end
-  end
-  end
+end
+
 def serPremium
 	self.esPremium = true
 	self.save

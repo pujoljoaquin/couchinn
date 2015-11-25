@@ -4,8 +4,18 @@ def show
 	@couch = Couch.find(params[:id])
 end	
 
-def index
-		
+def edit
+	@couch = Couch.find(params[:id])
+end
+
+def update
+	@couch = Couch.find(params[:id])
+	@couch.update(params.require(:couch).permit(:nombre, :descripcion, :lugar, :capacidad, :imagen, :couch_type_id))
+	redirect_to couches_path
+end
+
+
+def index		
 	tipo = params[:couch_type_id]
 	lugar = params[:lugar]
 	capacidad = params[:capacidad]
@@ -14,6 +24,8 @@ def index
 	vuelta = params[:vuelta]
 
 	@couches = Couch.free_couches(tipo, lugar, capacidad, puntuacion, ida, vuelta)
+
+end
 
 #	@couches = Couch.all.prioridades
 
@@ -45,17 +57,14 @@ def index
 #else
 #	@couches = Couch.all
 #end
-end
 
 def new
 	@couch = Couch.new
 end 
 
 def create
-	
 	@couch = Couch.new(params.require(:couch).permit(:nombre, :couch_type_id, :descripcion, :lugar, :capacidad, :imagen))
 	@couch.user = current_user
-	
 	if @couch.save
 		redirect_to couches_path
 	else
@@ -67,4 +76,6 @@ def destroy
 	couch = Couch.find(params[:id])
 	couch.destroy
 	redirect_to users_show_path
+end
+
 end

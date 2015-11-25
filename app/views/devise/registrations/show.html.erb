@@ -47,11 +47,11 @@
             					<%= link_to 'Ver couch', couch_path(couch.id), class: "btn btn-success btn-xs" %>
          					</button>
          					<button class="btn btn-success btn-xs" type="button">
-            					<%= link_to 'Modificar couch', couch_path(couch.id), class: "btn btn-success btn-xs" %>
+            					<%= link_to 'Modificar couch', edit_couch_path(couch.id), class: "btn btn-success btn-xs" %>
           					</button>
           					<p></p>
           					<button class="btn btn-success btn-xs" type="button">
-            					<%= link_to "Eliminar couch", couch, method: :delete, class: "btn btn-success btn-xs" %>
+            					<%= link_to "Eliminar couch", couch, method: :delete, :data => {:confirm => '¿Está seguro que quiere eliminar este couch?'}, class: "btn btn-success btn-xs" %>
          					</button>
    						</div>
    					</div>

@@ -4,4 +4,5 @@ def show
 	@couchesUser = current_user.couches
 end
 
+
 end
