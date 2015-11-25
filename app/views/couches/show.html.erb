@@ -31,7 +31,7 @@
       <button class="btn btn-default btn-sm" type="button">
         <%= link_to 'Atrás', :back, class: "btn-default" %>
       </button>  
-      <% if user_signed_in? then %>
+      <% if ((user_signed_in?) && (current_user != @couch.user)) then %>
       <!-- Se debe analizar si el usuario es el propietario del couch!!!!!!!!!!!!!!!! -->
         <button class="btn btn-default btn-sm" type="button">
           <%= link_to 'Reservar', new_reserva_path, class: "btn-default" %>
@@ -44,10 +44,18 @@
   </div>
   </br>
   <h3 class="media-heading" style="color:#6B8E23;"><strong> Consultas </strong></h3>
+    <em class="text-left"><small> Las consultas publicadas serán respondidas por el propietario del couch a la brevedad. Aquel usuario que incluya en sus mensajes algún comentario violatorio del reglamento será eliminado e inhabilitado para volver a comentar. Enviar un comentario implica la aceptación del Reglamento.</small></em>
+    </br>
+   <% if (user_signed_in?) %>
     <div class="row">
-      <div class="col-md-6">
-        <em class="text-left"><small> Las consultas publicadas serán respondidas por el propietario del couch a la brevedad. Aquel usuario que incluya en sus mensajes algún comentario violatorio del reglamento será eliminado e inhabilitado para volver a comentar. Enviar un comentario implica la aceptación del Reglamento.</small></em>
+      <div class="col-md-4">
+        <button class="btn btn-default btn-sm" type="button">Consultar</button>
+        <p></p>
+        <p class="text-center"><img src= <%= current_user.foto %> class = "img-circle" alt="imagen" style="width:50px;height:50px">
+        <%= current_user.nombre %> <%= current_user.apellido %> <em><small><%= current_user.nombreUsuario %></small></em> </p>
+        <p class="text-center"> Acá se encontrará la consulta del usuario </p>
       </div>
     </div>
+   <% end %>
 </center>
 </body>
