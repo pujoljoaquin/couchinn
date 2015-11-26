@@ -10,41 +10,10 @@ def index
 	lugar = params[:lugar]
 	capacidad = params[:capacidad]
 	puntuacion = params[:puntuacion]
-	ida = params[:ida]
-	vuelta = params[:vuelta]
+	check_in = params[:ida]
+	check_out = params[:vuelta]
 
-	@couches = Couch.free_couches(tipo, lugar, capacidad, puntuacion, ida, vuelta)
-
-#	@couches = Couch.all.prioridades
-
-#	if lugar != nil 
-#		@couches = @couches.where("lugar ILIKE ?", "%#{lugar}%")
-#	end
-#	if capacidad != nil && capacidad != "" 
-#		@couches = @couches.where( "capacidad >= ?", "#{capacidad}")
-#	end
-#	if puntuacion != nil && puntuacion != ""
-#		@couches = @couches.where( "puntuacion >= ?", "#{puntuacion}")
-#	end
-#	if tipo != nil && tipo != ""
-#		@couches = @couches.where( "couch_type_id = ?", "#{tipo}")
-#	end
-#	if (ida) && (vuelta)
-#		@couches = @couches.where("")
-#	end
-
-
-#	Client.where("created_at >= :start_date AND created_at <= :end_date",
- # {start_date: params[:start_date], end_date: params[:end_date]}
-
-#if (params[:lugar])
-#	@couches = Couch.all.where( :lugar => params[:lugar])
-#end
-#if (!params[:lugar])
-#	@couches = Couch.all 
-#else
-#	@couches = Couch.all
-#end
+	@couches = Couch.free_couches(tipo, lugar, capacidad, puntuacion, check_in, check_out)
 end
 
 def new
@@ -67,4 +36,5 @@ def destroy
 	couch = Couch.find(params[:id])
 	couch.destroy
 	redirect_to users_show_path
+end
 end

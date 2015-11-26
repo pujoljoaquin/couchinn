@@ -44,13 +44,13 @@
         <div style:"color:white" >
         <%= label_tag :fecha_ida  %>
         </div>
-        <%= date_select :ida, :couch, order: [:day, :month, :year], :start_year => Time.now.year , use_month_numbers: true , use_two_digit_numbers: true, :include_blank => true %>
-  
+        <%= text_field_tag :ida, Date.today, type: :date %>
+        
         <div style:"color:white" >
         <br />
         <%= label_tag :fecha_vuelta  %>
         </div>
-        <%= date_select :vuelta, :couch, order: [:day, :month, :year], :start_year => Time.now.year , use_month_numbers: true , use_two_digit_numbers: true, :include_blank => true %>
+        <%= text_field_tag :vuelta, Date.today, type: :date %>
   
       </div>
    
@@ -67,7 +67,9 @@
     <div class="col-md-6 col-md-offset-3">
 <ul class="media-list">
 <li class="media">
-
+<% if @couches == nil %>
+  <p class="alert tipoRegistroCentro" style="color:red"><strong>No se han encontrado coincidencias</p>  
+<% else %>
 <% @couches.each do |couch| %>
 
   <div class="media"> 
@@ -86,6 +88,7 @@
           
       </div>
   </div>
+<% end %>
 <% end %>
 </li>
 </ul>

@@ -24,7 +24,6 @@
           <img src= <%= current_user.foto %> class = "img-circle" alt="imagen" style="width:30px;height:30px">
         <% end %>
         <li><%= link_to 'Cerrar sesión', destroy_user_session_path, :data => {:confirm => '¿Está seguro que quiere cerrar sesión?'} %></li>
->>>>>>> 8e17806bb5a5ff185cc5ad9ccf044df8d656e26e
         
       <% else %>
         <li><%= link_to "Registrarse", new_user_registration_path, :class => 'navbar-link'%></li>
