@@ -5,4 +5,8 @@ def show
 end	
 def index
 end
+
+def indexreservas
+	@couch = Couch.find(params[:id])
+end
 end

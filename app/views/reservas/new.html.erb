@@ -1,34 +1,31 @@
 <div class="container">
-	<h1 style="color:#6B8E23;" class="text-center"> Realizar reserva </h1>
-	<br>
 	<%= form_for @reserva do |f| %>
-		<p class="notice text-center" style="color:red"><strong><%= notice %></p>
+		<p class="notice text-center" style="color:red"><strong><%= notice %></strong></p>
   		<div class="row">	
   			<div class="col-md-4 col-md-offset-4" >
-
+  				<h1 style="color:#6B8E23;" class="text-left"> Realizar reserva </h1>
+				<br>
           		<%= f.label :inicio, 'Fecha de entrada', class: 'control-label'%>
           		<%= f.date_select :inicio, :order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year+1 %>
-  				<% if @reserva.errors.messages[:inicio] && !@reserva.errors.messages[:inicio].empty? %> 
+          		<%= @reserva.errors.inspect %>
+				<% if @reserva.errors.messages[:inicio] && !@reserva.errors.messages[:inicio].empty? %> 
   					<% @reserva.errors.messages[:inicio].each do |error|%>
-  						<p style="color:red"><strong>error</p>
+  						<p style="color:red"><strong><%=error%></strong></p>
 			
   					<%end%>
-				<% end %>
+				<% end %>  				
 
 				<%= f.label :fin, 'Fecha de salida', class: 'control-label'%>
 				<%= f.date_select :fin, :order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year+1 %>
-	  			<% if @reserva.errors.messages[:fin] && !@reserva.errors.messages[:fin].empty? %> 
-	  				<% @reserva.errors.messages[:fin].each do |error|%>
-  						<p style="color:red"><strong>error</p>
-			
-  					<%end%>
-				<% end %>
+	  			
+
+				<%= f.hidden_field :couch_id%>
 
   			</div>
   		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-3 col-md-offset-4">
+			<div class="col-md-4 col-md-offset-4">
 				<%= f.submit "Reservar", class: 'btn btn-success' %>
 				<%= link_to "Cancelar", couches_path, class: 'btn btn-success' %>
 			</div>

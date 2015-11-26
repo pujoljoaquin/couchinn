@@ -33,7 +33,7 @@
       </button>  
       <% if user_signed_in? then %>
         <button class="btn btn-default btn-sm" type="button">
-          <%= link_to 'Reservar', new_reserva_path, class: "btn-default" %>
+          <%= link_to 'Reservar', new_reserva_path(:couch_id => @couch.id), class: "btn-default" %>
         </button>
       <%end%>
     </p>
