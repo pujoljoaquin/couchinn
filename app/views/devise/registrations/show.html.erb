@@ -51,6 +51,10 @@
           					</button>
           					<p></p>
           					<button class="btn btn-success btn-xs" type="button">
+                      <%= link_to 'Mis reservas', edit_couch_path(couch.id), class: "btn btn-success btn-xs" %>
+                    </button>
+
+          					<button class="btn btn-success btn-xs" type="button">
             					<%= link_to "Eliminar couch", couch, method: :delete, :data => {:confirm => '¿Está seguro que quiere eliminar este couch?'}, class: "btn btn-success btn-xs" %>
          					</button>
    						</div>
