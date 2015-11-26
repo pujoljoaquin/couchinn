@@ -29,7 +29,7 @@ end
 
 
 def indexreservas
-	@couch = Couch.find(params[:id])
+	@couch = Couch.find(params[:couch_id])
 end
 
 #	@couches = Couch.all.prioridades

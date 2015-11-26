@@ -2,6 +2,7 @@ class Reserva < ActiveRecord::Base
 belongs_to :couch
 validate :validar_fecha_ocupada
 validate :validar_fecha_invalida
+default_scope -> { order("inicio") }
 
 @errors = nil
 

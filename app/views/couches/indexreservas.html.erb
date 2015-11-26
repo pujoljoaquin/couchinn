@@ -1,5 +1,6 @@
 <body>
 	<center>
+		<h1 style="color:#6B8E23;" class="text-center"> <strong>Mis reservas </strong></h1>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 <table class = "table center">
@@ -14,12 +15,12 @@
 	<% @couch.reservas.all.each do |reserva| %>
 		
 		<tr>
-			<td><p><%=user.find(reserva.user_id).nombre%>
-				<%=user.find(reserva.user_id).nombre%></p>
+			<td><p><%= User.find(reserva.user_id).nombre%>
+				<%= User.find(reserva.user_id).apellido%></p>
 			</td>
 
-			<td> <%= reserva.inicio%> </td>
-			<td> <%= reserva.fin%> </td>
+			<td> <%= reserva.inicio.day %>/<%= reserva.inicio.month %>/<%= reserva.inicio.year %> </td>
+			<td> <%=reserva.fin.day %>/<%= reserva.fin.month %>/<%= reserva.fin.year %> </td>
 			<td>
 				<% if reserva.confirmada == true%> 
 					Confirmada
@@ -33,7 +34,7 @@
 	<% if @couch.reservas.count == 0 %>
 		<tr> <td colspan="3"> No hay reservas para este couch </td> </tr>
 	<% end %>
-	<tr><td class="center-block" colspan="3"><%= link_to "Atrás", :back, class: 'btn btn-info btn-sm' %></td></tr>
+	<tr><td class="center-block" colspan="3"><%= link_to "Atrás", :back, class: 'btn btn-success btn-sm' %></td></tr>
 
 </table>
 <div>

@@ -1,4 +1,4 @@
-<h1 style="color:#6B8E23;" class="tipoRegistroCentro"><%= current_user.nombre %> <%= current_user.apellido %></h2>
+<h1 style="color:#6B8E23;" class="tipoRegistroCentro"><%= current_user.nombre %> <%= current_user.apellido %></h1>
 
 <div class="container">
 	<div class="row">
@@ -43,16 +43,18 @@
       					<div class="media-body">
         					<h4 class="media-heading"><%= couch.nombre %> <small><i> <%= couch.lugar %></i></small></h4>
         					<p> Puntuacion: <%= couch.puntuacion %></p>
+        					
         					<button class="btn btn-success btn-xs" type="button">
             					<%= link_to 'Ver couch', couch_path(couch.id), class: "btn btn-success btn-xs" %>
          					</button>
+         					
          					<button class="btn btn-success btn-xs" type="button">
             					<%= link_to 'Modificar couch', edit_couch_path(couch.id), class: "btn btn-success btn-xs" %>
           					</button>
           					<p></p>
           					<button class="btn btn-success btn-xs" type="button">
-                      <%= link_to 'Mis reservas', edit_couch_path(couch.id), class: "btn btn-success btn-xs" %>
-                    </button>
+                      		<%= link_to 'Mis reservas', couch_reservas_path(:couch_id => couch.id), class: "btn btn-success btn-xs" %>
+                    		</button>
 
           					<button class="btn btn-success btn-xs" type="button">
             					<%= link_to "Eliminar couch", couch, method: :delete, :data => {:confirm => '¿Está seguro que quiere eliminar este couch?'}, class: "btn btn-success btn-xs" %>
