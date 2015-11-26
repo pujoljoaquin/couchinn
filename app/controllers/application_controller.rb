@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
   	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nombre, :apellido, :email, :nombreUsuario, :fechaNac, :nacionalidad, :masculino, :password, :password_confirmation, :esPremium, :foto) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:nombre, :apellido, :nombreUsuario, :fechaNac, :nacionalidad, :masculino, :password, :password_confirmation, :current_password, :foto) }
   end
-
   #def after_sign_in_path_for(resource) 
 #	session[:previous_url] || root_path
    # redirect_to couchinn_path

@@ -1,13 +1,13 @@
 class PremiumsController < ApplicationController
   
 def index
+  if params[:commit] == "Pagar"
+  	current_user.serPremium
+    redirect_to couches_path
+  end
 end
 
 def update
-  if params[:commit] == 'Pagar'
-    redirect_to couches_path
-  #elsif params[:commit] == 'Update form 2'
-    #do something else
-  end
 end
+
 end

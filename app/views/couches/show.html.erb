@@ -29,9 +29,10 @@
     <p class="text-left" > <%= image_tag "contacto.png"%>  <strong>Contacto: </strong><%= @couch.user.email %></p>
     <p class = "text-left">
       <button class="btn btn-default btn-sm" type="button">
-        <%= link_to 'Atrás', couches_path, class: "btn-default" %>
+        <%= link_to 'Atrás', :back, class: "btn-default" %>
       </button>  
       <% if user_signed_in? then %>
+      <!-- Se debe analizar si el usuario es el propietario del couch!!!!!!!!!!!!!!!! -->
         <button class="btn btn-default btn-sm" type="button">
           <%= link_to 'Reservar', new_reserva_path(:couch_id => @couch.id), class: "btn-default" %>
         </button>
@@ -41,5 +42,12 @@
 
   </div>
   </div>
+  </br>
+  <h3 class="media-heading" style="color:#6B8E23;"><strong> Consultas </strong></h3>
+    <div class="row">
+      <div class="col-md-6">
+        <em class="text-left"><small> Las consultas publicadas serán respondidas por el propietario del couch a la brevedad. Aquel usuario que incluya en sus mensajes algún comentario violatorio del reglamento será eliminado e inhabilitado para volver a comentar. Enviar un comentario implica la aceptación del Reglamento.</small></em>
+      </div>
+    </div>
 </center>
 </body>

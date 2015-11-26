@@ -1,38 +1,40 @@
-<h2 class="tipoRegistro">Registrar datos para ser Premium </h2>
+<h2 class="tipoRegistroCentro">Registrar datos para ser Premium </h2>
 
-<%= form_tag '/premiums' do %>
+<p class="tipoRegistroCentro"> Disfrute de los grandes beneficios de tener una cuenta Premium!!!</p>
+<p class="tipoRegistroCentro"> Por un precio único tiene la posibildad de que sus couchs tengan prioridad ante la búsqueda.</p>
+<p class="tipoRegistroCentro"> Recuerde que el pago se realiza una sola vez y.. SOS PREMIUM POR SIEMPRE!!!!!!</p>
+<%= form_tag '/premiums', method: :get do %>
 
-	<div class="field tipoRegistro">
-	<%= label_tag :banco, "Banco" %>
-	<%= select_tag("priority", options_for_select([['Banco Patagonia', '1'],
-                 ['American Express', '2'],['Banco Ciudad','3'],['Banco Credicoop','4'],['Banco Galicia','5'],['Banco Itaú','6'],['Banco Macro','7'],['Banco HSBC','8'],['CitiBank','9']], '9')) %>
-	</div>
-
-	<div class="field tipoRegistro">
+	<div class="field tipoRegistroCentro">
 	<%= label_tag :tarjeta, "Tarjeta" %>
 	<%= select_tag("priority", options_for_select([['Visa', '1'],
                  ['Mastercard', '2'],['Credencial','3'],['American Express','4']], '4')) %>
 	</div>
 
-	<div class="field tipoRegistro">
+	<div class="field tipoRegistroCentro">
+	<%= label_tag :nombre, "Titular de la tarjeta" %>
+	<%= text_field_tag :nombre, "", :pattern => '^[a-zA-Z ]+', title: 'Se permiten solo letras', :required => "required"%>
+	</div>
+	
+	<div class="field tipoRegistroCentro">
 	<%= label_tag :numeroTarjeta, "Numero de la tarjeta" %>
-	<%= number_field_tag :numeroTarjeta, "", :required => "required", :maxlength => 16, :size => 16 %>
+	<%= text_field_tag :numeroTarjeta, "", placeholder: '16 números, sin guión', :pattern => '^\d{16}$', title: 'Formato inválido', :required => "required" %>
 	</div>
 
-	<div class="field tipoRegistro">
+	<div class="field tipoRegistroCentro">
 	<%= label_tag :codigoSeguridad, "Codigo de seguridad" %>
-	<%= password_field_tag :codigoSeguridad, "", :required => "required", :maxlength => 3, :size => 3 %>
+	<%= password_field_tag :codigoSeguridad, "", :required => "required", :pattern => '^\d{3}$', title: 'Formato inválido. Deben ser sólo 3 números' %>
 	</div>
 
-	<div class="field tipoRegistro">
+	<div class="field tipoRegistroCentro">
 	<%= label_tag :fechaVencimiento, "Fecha de vencimiento" %>
-	<%= month_field_tag :fechaVencimiento, :required => "required" %>
+	<%= date_select :fechaVencimiento, :fechaVencimiento, order: [:month, :year], use_month_numbers: true, :start_year => Time.now.year, :end_year => Time.now.year + 10 %>
 	</div>
 
-	<p class="tipoRegistro"> Total: $400 </p>
-	<div class="field tipoRegistro">
+	<p class="tipoRegistroCentro"><strong> Total: $400 </p>
+	<div class="field tipoRegistroCentro">
 		<%= submit_tag("Pagar") %> 
-		<%= link_to "Cancelar", couches_path, class: 'btn btn-success btn-sm' %>
+		<%= link_to "Cancelar", :back, class: 'btn btn-success btn-sm' %>
 	</div>
 
 <% end %>

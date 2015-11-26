@@ -9,7 +9,6 @@ end
 def new
 	@couch_type = CouchType.new
 end
-
 def create
 	@couch_type = CouchType.create(params.require(:couch_type).permit(:nombre,:activo))
 	if @couch_type.errors.empty?

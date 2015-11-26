@@ -7,7 +7,7 @@ validate :validar_fecha_invalida
 
 
 def validar_fecha_ocupada
-	@error.add(:inicio, "El couch está ocupado") unless self.couch.is_free?(self.inicio,self.fin)
+	@errors.add(:inicio, "El couch está ocupado") unless self.couch.is_free?(self.inicio,self.fin)
 end
 
 
@@ -22,3 +22,4 @@ end
 
 
 end
+

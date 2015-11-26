@@ -7,7 +7,6 @@
 				<br>
           		<%= f.label :inicio, 'Fecha de entrada', class: 'control-label'%>
           		<%= f.date_select :inicio, :order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year+1 %>
-          		<%= @reserva.errors.inspect %>
 				<% if @reserva.errors.messages[:inicio] && !@reserva.errors.messages[:inicio].empty? %> 
   					<% @reserva.errors.messages[:inicio].each do |error|%>
   						<p style="color:red"><strong><%=error%></strong></p>
@@ -17,7 +16,12 @@
 
 				<%= f.label :fin, 'Fecha de salida', class: 'control-label'%>
 				<%= f.date_select :fin, :order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year+1 %>
-	  			
+	  			<% if @reserva.errors.messages[:fin] && !@reserva.errors.messages[:fin].empty? %> 
+  					<% @reserva.errors.messages[:fin].each do |error|%>
+  						<p style="color:red"><strong><%=error%></strong></p>
+			
+  					<%end%>
+  				<%end%>
 
 				<%= f.hidden_field :couch_id%>
 

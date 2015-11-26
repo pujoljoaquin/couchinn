@@ -8,6 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #Couch.find_or_create_by( nombre: "Choza de Cletus", descripcion: "safa", lugar: "villa 31", puntuacion: 1, disponibilidad: true, capacidad: 10)
 #puts "Creo users"
+
 puts "Creo los users"
 cletus = User.find_by(nombre: 'Cletus')
 if cletus.nil?
@@ -35,5 +36,10 @@ cabana = CouchType.find_or_create_by(nombre:"Cabaña", activo:true)
 
 puts "Creo los Couches"
 Couch.find_or_create_by(couch_type:cabana, nombre: 'Casa en el Lago', descripcion: 'Hermosa vista al lago, muy comoda', lugar: 'Cordoba', user:susana, puntuacion: 4, capacidad: 2, disponibilidad: true, esPremium: false, imagen:"http://thumbs.dreamstime.com/t/casa-por-el-lago-8140207.jpg")
-Couch.find_or_create_by(couch_type:casa, nombre: "Choza de Cletus", descripcion: 'Chiquita, especial para juventud que quiera veranear y pasarla bien', lugar: "Villa Gessel", user:cletus, puntuacion: 1, capacidad: 10, disponibilidad: true, esPremium: false, imagen: "http://vignette2.wikia.nocookie.net/simpsons/images/4/44/Cletus_and_Children.jpg/revision/latest?cb=20110105211428")
+Couch.find_or_create_by(couch_type:casa, nombre: "Choza de Cletus", descripcion: 'Chiquita, especial para juventud que quiera veranear y pasarla bien', lugar: "Villa Gesell", user:cletus, puntuacion: 1, capacidad: 10, disponibilidad: true, esPremium: false, imagen: "http://vignette2.wikia.nocookie.net/simpsons/images/4/44/Cletus_and_Children.jpg/revision/latest?cb=20110105211428")
 Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", descripcion: "Donde vive la presidente de la nación", lugar: "Capital Federal", puntuacion: 5, user:cristina, disponibilidad: false, capacidad: 1, esPremium: true)
+
+
+puts "Creo las reservas"
+Reserva.find_or_create_by(inicio:(Date.today + 2.days) , fin:(Date.today + 4.days), user_id:cletus.id, couch_id:2, confirmada:true);
+

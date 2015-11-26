@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118124918) do
+ActiveRecord::Schema.define(version: 20151119193236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,13 +80,9 @@ ActiveRecord::Schema.define(version: 20151118124918) do
     t.boolean  "esPremium",              default: false
     t.boolean  "masculino",              default: false
     t.string   "esAdmin"
-    t.string   "boolean"
-    t.string   "fechaPremium"
-    t.string   "datetime"
-    t.date     "fechaNacimiento"
-    t.time     "nacimiento"
     t.integer  "puntaje"
     t.string   "foto",                   default: "http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-green-icon.png"
+    t.datetime "fechaPremium"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
