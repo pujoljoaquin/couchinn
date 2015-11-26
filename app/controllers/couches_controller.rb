@@ -20,11 +20,10 @@ def index
 	lugar = params[:lugar]
 	capacidad = params[:capacidad]
 	puntuacion = params[:puntuacion]
-	ida = params[:ida]
-	vuelta = params[:vuelta]
+	check_in = params[:ida]
+	check_out = params[:vuelta]
 
-	@couches = Couch.free_couches(tipo, lugar, capacidad, puntuacion, ida, vuelta)
-
+	@couches = Couch.free_couches(tipo, lugar, capacidad, puntuacion, check_in, check_out)
 end
 
 
@@ -83,5 +82,4 @@ def destroy
 	couch.destroy
 	redirect_to users_show_path
 end
-
 end

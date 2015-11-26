@@ -5,6 +5,7 @@
   			<div class="col-md-4 col-md-offset-4" >
   				<h1 style="color:#6B8E23;" class="text-left"> Realizar reserva </h1>
 				<br>
+
           		<%= f.label :inicio, 'Fecha de entrada', class: 'control-label'%>
           		<%= f.date_select :inicio, :order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year+1 %>
 				<% if @reserva.errors.messages[:inicio] && !@reserva.errors.messages[:inicio].empty? %> 
