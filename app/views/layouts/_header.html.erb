@@ -19,6 +19,8 @@
         <%end%>
         <% if (current_user.esPremium == false) %>
           <li><%= link_to 'Ser premium!', premiums_path, :class => 'navbar-link' %></li>
+        <% else %>
+          <li><a href="#">Soy premium!</a></li>
         <% end %>
         <li><%=link_to users_show_path, class: 'navbar-brand' do %>
           <img src= <%= current_user.foto %> class = "img-circle" alt="imagen" style="width:30px;height:30px">

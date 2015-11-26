@@ -18,7 +18,7 @@
 	
 	<div class="field tipoRegistroCentro">
 	<%= label_tag :numeroTarjeta, "Numero de la tarjeta" %>
-	<%= text_field_tag :numeroTarjeta, "", placeholder: '16 números, sin guión', :pattern => '^\d{16}$', title: 'Formato inválido', :required => "required" %>
+	<%= text_field_tag :numeroTarjeta, "", placeholder: '16 números, sin guión', :pattern => '^\d{16}$', title: 'Formato inválido. Deben ser 16 números, sin guión', :required => "required" %>
 	</div>
 
 	<div class="field tipoRegistroCentro">
