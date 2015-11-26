@@ -1,7 +1,4 @@
 <h1 style="color:#6B8E23;" class="tipoRegistroCentro">
-	<% if current_user.esPremium %>
-		<img src="goldGreen.png" class ="img-rounded" alt="imagen" style="width:50px;height:50px">
-	<% end %>
 	<%= current_user.nombre %> <%= current_user.apellido %></h2>
 <% if notice %>
 <div class="alert alert-success tipoRegistroCentro" role="alert">
