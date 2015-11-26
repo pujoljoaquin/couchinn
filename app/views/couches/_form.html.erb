@@ -8,7 +8,7 @@
   		<%= f.label :lugar, 'Lugar'%>
   		<%= f.text_field :lugar, required: true, class: 'form-control', placeholder: 'Ingrese lugar del Couch'  %>
   		<%= f.label :capacidad, 'Capacidad'%>
-  		<%= f.number_field :capacidad, required: true, class: 'form-control', min: 1, max: 20 %>
+  		<%= f.number_field :capacidad, required: true, class: 'form-control', min: 1, max: 100 %>
   		<%= f.label :imagen, 'URL de la imagen'%>
   		<%= f.text_field :imagen, required: true, class: 'form-control', placeholder: 'Ingrese el URL'  %>
   		<%= f.label :couch_type_id, "Tipo de Couch" %><br />

@@ -50,25 +50,9 @@
             					<%= link_to 'Modificar couch', edit_couch_path(couch.id), class: "btn btn-success btn-xs" %>
           					</button>
           					<p></p>
-          					<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">
-            					Reservas
-          					</button>
-          					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  								    <div class="modal-dialog" role="document">
-    								    <div class="modal-content">
-      									   <div class="modal-header">
-        									   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        									   <h4 class="modal-title" id="myModalLabel">Reservas del Couch</h4>
-      									   </div>
-      									   <div class="modal-body">
-      										    ACA IRIA LA TABLA CON LAS RESERVAS ACTUALES, PENDIENTES Y CONFIRMADAS.
-      									   </div>
-      									   <div class="modal-footer">
-        									   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      									   </div>
-    								    </div>
-  								    </div>
-							      </div>
+          					<button class="btn btn-success btn-xs" type="button">
+                      <%= link_to 'Mis reservas', edit_couch_path(couch.id), class: "btn btn-success btn-xs" %>
+                    </button>
 
           					<button class="btn btn-success btn-xs" type="button">
             					<%= link_to "Eliminar couch", couch, method: :delete, :data => {:confirm => '¿Está seguro que quiere eliminar este couch?'}, class: "btn btn-success btn-xs" %>
