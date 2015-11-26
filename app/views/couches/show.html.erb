@@ -38,7 +38,11 @@
       <% if ((user_signed_in?) && (current_user != @couch.user)) then %>
       <!-- Se debe analizar si el usuario es el propietario del couch!!!!!!!!!!!!!!!! -->
         <button class="btn btn-default btn-sm" type="button">
-          <%= link_to 'Reservar', new_reserva_path, class: "btn-default" %>
+          <%= link_to 'Reservar', new_reserva_path(:couch_id => @couch.id), class: "btn-default" %>
+        </button>
+      <%else%>
+        <button class="btn btn-default btn-sm" type="button">
+          <%= link_to 'Mis reservas', couch_reservas_path(:couch_id => @couch.id), class: "btn-default" %>
         </button>
       <%end%>
     </p>

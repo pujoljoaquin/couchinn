@@ -7,7 +7,8 @@
             data-target=".navbar-ex1-collapse">
     </button>
     <%= link_to root_path, class: 'navbar-brand' do %>
-      <img src="logo2.png" class="img-responsive" alt="imagen">
+      <%= image_tag "logo2.png", :alt => "logo", :title => "logo", :height => "140%" %>
+     
     <% end %>
   </div> 
       <ul class="nav navbar-nav navbar-right">
@@ -34,7 +35,5 @@
      </li>
     </ul>
   </div>
-  </div>
 </nav>
 </header>
-  
