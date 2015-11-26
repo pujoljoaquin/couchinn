@@ -29,9 +29,10 @@
     <p class="text-left" > <%= image_tag "contacto.png"%>  <strong>Contacto: </strong><%= @couch.user.email %></p>
     <p class = "text-left">
       <button class="btn btn-default btn-sm" type="button">
-        <%= link_to 'Atrás', couches_path, class: "btn-default" %>
+        <%= link_to 'Atrás', :back, class: "btn-default" %>
       </button>  
-      <% if user_signed_in? then %>
+      <% if ((user_signed_in?) && (current_user != @couch.user)) then %>
+      <!-- Se debe analizar si el usuario es el propietario del couch!!!!!!!!!!!!!!!! -->
         <button class="btn btn-default btn-sm" type="button">
           <%= link_to 'Reservar', new_reserva_path, class: "btn-default" %>
         </button>
@@ -41,5 +42,47 @@
 
   </div>
   </div>
+  </br>
+  </br>
+  </br>
+    <div class="row">
+   <div class="col-md-6 col-md-offset-3"> 
+  <h3 class="media-heading" style="color:#6B8E23;"><strong> Consultas </strong></h3>
+   <em class="text-left"><small> Las consultas publicadas serán respondidas por el propietario del couch a la brevedad. Aquel usuario que incluya en sus mensajes algún comentario violatorio del reglamento será eliminado e inhabilitado para volver a comentar. Enviar un comentario implica la aceptación del Reglamento.</small></em>
+    </br>
+    </br>
+  </br>
+        <ul class="media-list">
+        <li class="media">
+        <div class="media"> 
+          <div class="pull-left">
+    
+            <img src= <%= User.find(1).foto %> class = "img-circle" alt="imagen" style="width:50px;height:50px">
+             <p> <%= User.find(1).nombre %> <%= User.find(1).apellido %> <i><small><%= User.find(1).nombreUsuario %></small></i></p> 
+         </div>
+        <div class="media-body">
+          </br>
+          <p class="text-left"> Hola, se permiten mascotas en este couch? </p>
+        </div> 
+
+        <div class="media"> 
+          </br>
+
+        <div class="pull-left">
+    
+           <img src= <%= @couch.user.foto %> class = "img-circle" alt="imagen" style="width:50px;height:50px">
+          <p> <%= @couch.user.nombre %> <%= @couch.user.apellido %> <i><small><%= @couch.user.nombreUsuario %></small></i></p> 
+        </div>
+        <div class="media-body">
+    </br>
+        <p class="text-left"> No, no se permiten mascotas en este couch. </p>
+
+
+    </div>
+  </li>
+</ul>
+        
+      </div>
+    </div>
 </center>
 </body>

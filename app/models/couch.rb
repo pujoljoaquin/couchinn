@@ -46,9 +46,7 @@ def self.free_couches(tipo, lugar, capacidad, puntuacion, check_in, check_out)
     end
 
     return result
-
 end
- 
 def serPremium
 	self.esPremium = true
 	self.save

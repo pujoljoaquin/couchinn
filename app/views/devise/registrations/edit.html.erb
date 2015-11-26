@@ -105,7 +105,7 @@
           <% end %>
         </div>
 
-        <div class="actions tipoRegistro">
+        <div class="actions tipoRegistroCentro">
           <br />
             <button class="btn btn-default">
               <% f.submit "Actualizar mi perfil"%>
@@ -116,11 +116,12 @@
         <% end %>
 
         <div class="tipoRegistroCentro">
+           <br />
            <button class="btn btn-default">
-              <%= link_to 'Atrás', users_show_path, class: "btn-default" %>
+              <%= link_to 'Atrás', :back, class: "btn-default" %>
             </button>
            <button class="btn btn-default">
-              <%= link_to 'Eliminar mi cuenta', registration_path(resource_name), class: "btn-default", data: { confirm: "Are you sure?" }, method: :delete %>
+              <%= link_to 'Eliminar mi cuenta', registration_path(resource_name), class: "btn-default", data: { confirm: "¿Está seguro que quiere eliminar su cuenta?" }, method: :delete %>
             </button>
          <!-- <%= button_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> -->
         </div>
