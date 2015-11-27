@@ -7,7 +7,8 @@
             data-target=".navbar-ex1-collapse">
     </button>
     <%= link_to root_path, class: 'navbar-brand' do %>
-      <img src="logo2.png" class="img-responsive" alt="imagen">
+      <%= image_tag "logo2.png", :alt => "logo", :title => "logo", :height => "140%" %>
+     
     <% end %>
   </div> 
       <ul class="nav navbar-nav navbar-right">
@@ -19,6 +20,8 @@
         <%end%>
         <% if (current_user.esPremium == false) %>
           <li><%= link_to 'Ser premium!', premiums_path, :class => 'navbar-link' %></li>
+        <% else %>
+          <li><a href="#">Soy premium!</a></li>
         <% end %>
         <li><%=link_to users_show_path, class: 'navbar-brand' do %>
           <img src= <%= current_user.foto %> class = "img-circle" alt="imagen" style="width:30px;height:30px">
@@ -32,7 +35,5 @@
      </li>
     </ul>
   </div>
-  </div>
 </nav>
 </header>
-  

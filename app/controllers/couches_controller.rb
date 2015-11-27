@@ -26,6 +26,11 @@ def index
 	@couches = Couch.free_couches(tipo, lugar, capacidad, puntuacion, check_in, check_out)
 end
 
+
+def indexreservas
+	@couch = Couch.find(params[:couch_id])
+end
+
 #	@couches = Couch.all.prioridades
 
 #	if lugar != nil 
@@ -69,6 +74,7 @@ def create
 	else
 		redirect_to new_couch_path, notice: "Hay campos vacios"
 	end
+
 end
 
 def destroy

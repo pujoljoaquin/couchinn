@@ -1,3 +1,6 @@
+
+<body class="bgcolor">
+
 <div class="container"> 
 <div class="row"> 
 <div class="jumbotron">
@@ -87,6 +90,24 @@
               </button>
               
           </div>
+    <div class="col-md-6 col-md-offset-3">
+<ul class="media-list">
+<li class="media">
+
+
+   
+<% if @couches == nil %>
+  <p class="alert tipoRegistroCentro" style="color:red"><strong>No se han encontrado coincidencias</p>  
+<% else %>
+
+<% @couches.each do |couch| %>
+
+
+  <div class="media"> 
+  	<!-- VER href=# entre a y class -->
+      <div class="pull-left">
+   	  	<img class="img-rounded" class="media-object" src= <%= couch.imagen %>  alt="imagen" style="width:200px;height:150px" >
+>>>>>>> aa002c93c863302c0af36161c16156b61783e9bc
       </div>
       <% end %>
       <% end %>
