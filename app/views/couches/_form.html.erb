@@ -12,7 +12,7 @@
   		<%= f.label :imagen, 'URL de la imagen'%>
   		<%= f.text_field :imagen, required: true, class: 'form-control', placeholder: 'Ingrese el URL'  %>
   		<%= f.label :couch_type_id, "Tipo de Couch" %><br />
-      <%= f.select :couch_type_id, CouchType.all.collect { |c| [ c.nombre, c.id]} %>
+      <%= f.select :couch_type_id, CouchType.all.where(activo:true).collect { |c| [ c.nombre, c.id]} %>
   	</div>
   </div>
 	<br>
