@@ -25,7 +25,6 @@ def index
 
 	@couches = Couch.free_couches(tipo, lugar, capacidad, puntuacion, check_in, check_out)
 end
-end
 
 #	@couches = Couch.all.prioridades
 
