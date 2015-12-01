@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :configurations
   resources :couch_types
   resources :reservas
+  resources :consultas
   #devise_for :users
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions", :passwords => "passwords"}
   root 'couches#index'
   devise_scope :user do
     get '/users/show', to: 'registrations#show'

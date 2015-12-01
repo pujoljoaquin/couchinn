@@ -41,11 +41,11 @@ Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", descripcio
 
 
 puts "Creo las reservas"
-Reserva.find_or_create_by(inicio:"2016-01-01" , fin:"2016-01-15", user_id:cletus.id, couch_id: 2, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-02-01" , fin:"2016-02-15", user_id:cristina.id, couch_id: 3, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-01-10" , fin:"2016-01-20", user_id:cristina.id, couch_id: 3, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-02-18" , fin:"2016-02-23", user_id:susana.id, couch_id: 1, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-02-20" , fin:"2016-02-25", user_id:susana.id, couch_id: 1, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-03-01" , fin:"2016-03-15", user_id:cletus.id, couch_id: 2, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-01-10" , fin:"2016-01-19", user_id:cristina.id, couch_id: 3, confirmada:true);
+Reserva.find_or_create_by(inicio: (Date.today + 1.years - 10.months - 29.days), fin:(Date.today + 1.years - 10.months - 15.days), user_id:cletus.id, couch_id: 2, confirmada:true);
+Reserva.find_or_create_by(inicio:(Date.today + 1.years - 9.months - 29.days) , fin:(Date.today + 1.years - 9.months - 15.days), user_id:cristina.id, couch_id: 3, confirmada:true);
+Reserva.find_or_create_by(inicio: (Date.today + 1.years - 10.months - 20.days) , fin:(Date.today + 1.years - 10.months - 20.days), user_id:cristina.id, couch_id: 3, confirmada:true);
+Reserva.find_or_create_by(inicio: (Date.today + 1.years - 9.months - 12.days) , fin:(Date.today + 1.years - 9.months - 7.days), user_id:susana.id, couch_id: 1, confirmada:true);
+Reserva.find_or_create_by(inicio:(Date.today + 1.years - 9.months - 20.days) , fin:(Date.today + 1.years - 9.months - 25.days), user_id:susana.id, couch_id: 1, confirmada:true);
+Reserva.find_or_create_by(inicio: (Date.today + 1.years - 8.months - 29.days) , fin:(Date.today + 1.years - 8.months - 20.days), user_id:cletus.id, couch_id: 2, confirmada:true);
+Reserva.find_or_create_by(inicio:(Date.today + 1.years - 8.months - 20.days) , fin:(Date.today + 1.years - 9.months - 11.days), user_id:cristina.id, couch_id: 3, confirmada:true);
 
