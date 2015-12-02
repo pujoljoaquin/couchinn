@@ -1,1 +1,30 @@
-<h4> Tiene consultas </h4>
+<h1 style="color:#6B8E23;" class="text-center"> <strong> Consultas </strong></h1>
+<div class="tipoRegistroCentro">
+<% if (!@consultasConRespuesta.empty?) %>
+	<em><small>Las consultas que le respondieron dejaran de aparecer una vez que ingrese al couch mediante el botón provisto.</small></em>
+  <br />
+  <br />
+  <% @consultasConRespuesta.each do |consulta| %>
+		<p> Le han respondido la consulta realizada en el couch de <strong><%= User.find(consulta.userCouch).nombre %> <%= User.find(consulta.userCouch).apellido %></strong> </p>
+		<button class="btn btn-success btn-xs" type="button">
+        <%= link_to 'Ver couch', couch_path(consulta.couch_id), class: "btn btn-success btn-xs" %>
+    </button>
+    <br />  
+  <% end %>
+<% end %>
+
+<br />    
+<% if (!@consultasCouchSinRespuesta.empty?) %>
+    <em><small>Las consultas que realizaron sobre sus couches dejaran de aparecer una vez que las responda.</small></em>
+    <br />
+    <br />
+   	<% @consultasCouchSinRespuesta.each do |c| %>
+      <p> Usted tiene una consulta de <strong><%= User.find(c.user_id).nombre %> <%= User.find(c.user_id).apellido %></strong> en su couch <strong><%= Couch.find(c.couch_id).nombre %></strong> sin responder. </p>
+   		<button class="btn btn-success btn-xs" type="button">
+            <%= link_to 'Ver couch', couch_path(c.couch_id), class: "btn btn-success btn-xs" %>
+      </button> 
+      <br />
+      <br />  
+   	<% end %>
+<% end %>
+</div>

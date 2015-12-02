@@ -14,6 +14,7 @@ end
 def create
 	@consulta = Consulta.new(params.require(:consulta).permit(:pregunta, :couch_id, :user_id))
 	@consulta.fechaPregunta = DateTime.now
+	@consulta.userCouch = Couch.find(@consulta.couch_id).user.id
 	@consulta.save
 	redirect_to couch_path(@consulta.couch_id)
 end
@@ -29,6 +30,13 @@ def update
 end
 
 def index
+	todasConsultas = Consulta.all
+	consultasCouch = todasConsultas.where(userCouch: current_user.id)
+	@consultasCouchSinRespuesta = consultasCouch.where(respuesta: nil)
+	@consultasUsuario = todasConsultas.where(user_id: current_user.id)
+	#@consultasSinRespuesta = @consultas.where(respuesta:nil)
+	filtro = @consultasUsuario.where("respuesta != ?", "")
+	@consultasConRespuesta = filtro.where(respuestaVista: false)
 end
 
 end

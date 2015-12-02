@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201202157) do
+ActiveRecord::Schema.define(version: 20151202203929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20151201202157) do
     t.integer  "couch_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "userCouch"
+    t.boolean  "respuestaVista", default: false
   end
 
   create_table "couch_types", force: true do |t|

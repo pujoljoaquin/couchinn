@@ -13,7 +13,19 @@
   </div> 
       <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li><a href="consultas">Tiene consultas<span class="badge">4</span></a></li>
+        <% cantidad = 0 %>
+        <% if (!current_user.consultas.empty?) %>
+          <% filtro = current_user.consultas.where("respuesta != ?", "") %>
+          <% cantidad = filtro.where(respuestaVista: false).count %>
+        <% end %>
+        <% if(!current_user.couches.empty?) %>
+          <% aux = Consulta.all.where(userCouch: current_user.id) %>
+          <% cantidad = cantidad + aux.where(respuesta: nil).count %>
+        <% end %>
+        <% if cantidad != 0 %>
+          <li><%= link_to 'Tiene consultas', consultas_path, :class => 'navbar-link' %></li>
+          <li><span class="badge"><%= cantidad %></span></li>
+        <% end %>
         <li role="presentation" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reservas <span class="caret"></span></a>
           <ul class="dropdown-menu">
