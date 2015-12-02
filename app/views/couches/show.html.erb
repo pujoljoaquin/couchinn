@@ -59,13 +59,13 @@
       </br>
       </br>
       </br>
-      <% @couch.consultas.all.each do |consulta| %>
+      <% @couch.consultas.each do |consulta| %>
         <ul class="media-list">
         <li class="media">
         <div class="media"> 
           <div class="pull-left">
-            <img src= <%= User.find(consulta.user_id).foto %> class = "img-circle" alt="imagen" style="width:50px;height:50px">
-            <p> <%= User.find(consulta.user_id).nombreUsuario %></p> 
+            <img src= <%= consulta.user.foto %> class = "img-circle" alt="imagen" style="width:50px;height:50px">
+            <p> <%= consulta.user.nombreUsuario %></p> 
           </div>
           
           <div class="media-body">
@@ -98,7 +98,7 @@
       <% end %>
       <% if(current_user != @couch.user) %>
         <button class="btn btn-default btn-sm pull-left" type="button">
-            <%= link_to 'Consultar', new_consulta_path(:couch_id => @couch.id), class: "btn-default" %>
+            <%= link_to 'Consultar', new_consulta_path(:couch_id => @couch.id, :user_id => current_user.id), class: "btn-default" %>
         </button>
       <% end %>
     </div>

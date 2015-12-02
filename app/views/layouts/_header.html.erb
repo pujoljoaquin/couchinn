@@ -12,8 +12,17 @@
     <% end %>
   </div> 
       <ul class="nav navbar-nav navbar-right">
-
       <% if user_signed_in? %>
+        <li><a href="consultas">Tiene consultas<span class="badge">4</span></a></li>
+        <li role="presentation" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reservas <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Reservas pendientes <span class="badge">4</span></a></li>
+            <li><a href="#">Reservas confirmadas</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Reservas sobre mis Couches</a></li>
+          </ul>
+        </li>
         <li> <%= link_to 'Nuevo Couch', new_couch_path, :class => 'navbar-link' %></li>
         <%if (current_user.esAdmin)%>
          <li> <%= link_to 'Configuración', configurations_path, :class => 'navbar-link' %></li>
