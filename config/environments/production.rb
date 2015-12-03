@@ -13,7 +13,7 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     port: 587,
     #domain: 'gmail.com',
-    domain: 'couchinnsoft.herokuapp.com',
+    domain: 'heroku.com',
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: "joaquin.pujol95@gmail.com",
