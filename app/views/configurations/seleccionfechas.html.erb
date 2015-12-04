@@ -1,0 +1,16 @@
+<div class="container">
+	<%= form_tag 'configurations/seleccionfechas', method: :get do %>
+		
+		<br />
+		<%= label_tag :comienzo, "Fecha de inicio" %><br />
+		<%= date_select :comienzo, :comienzo, order: [:day, :month, :year], use_month_numbers: true, :start_year => Time.now.year - 2, :end_year => Time.now.year %>
+
+		<br />	
+		<%= label_tag :fin, "Fecha de fin" %><br />
+		<%= date_select :fin, :fin, order: [:day, :month, :year], use_month_numbers: true, :start_year => Time.now.year - 2, :end_year => Time.now.year %>
+
+		<%= submit_tag "Ver usuarios registrados", class: 'btn btn-default btn-sm' %>
+		<%= submit_tag "Ver dinero recaudado", class: 'btn btn-default btn-sm' %>
+		<%= link_to "Cancelar", :back, class: 'btn btn-default btn-sm' %>
+	<% end %>
+</div>

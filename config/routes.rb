@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   #get '/serPremium', to: 'premium#index'
   resources :premiums
   get '/couch/reservas', to:'couches#indexreservas'
+  get '/configurations/seleccionfechas', to: 'configurations#seleccionfechas'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
