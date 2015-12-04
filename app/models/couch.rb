@@ -51,4 +51,8 @@ def serPremium
 	self.esPremium = true
 	self.save
 end
+def aceptar
+    Reserva.find(reserva_id).confirmada==true;
+    redirect_to misreservas_path
+end
 end

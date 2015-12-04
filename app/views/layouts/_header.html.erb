@@ -14,9 +14,21 @@
       <ul class="nav navbar-nav navbar-right">
 
       <% if user_signed_in? %>
+      
+
+
+        <li role="presentation" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reservas <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Reservas pendientes', solicitudes_path%></li>
+            <li><%= link_to 'Reservas confirmadas', solicitudes_path%></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to 'Reservas sobre mis Couches', misreservas_path%><span class="badge"></span></li>
+          </ul>
+        </li>
         <li> <%= link_to 'Nuevo Couch', new_couch_path, :class => 'navbar-link' %></li>
         <%if (current_user.esAdmin)%>
-         <li> <%= link_to 'Configuración', configurations_path, :class => 'navbar-link' %></li>
+         <li> <%= link_to 'Configuración', configurations_path, :class => 'navbar-link' %></li4
         <%end%>
         <% if (current_user.esPremium == false) %>
           <li><%= link_to 'Ser premium!', premiums_path, :class => 'navbar-link' %></li>

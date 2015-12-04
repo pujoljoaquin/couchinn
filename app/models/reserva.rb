@@ -1,9 +1,11 @@
 class Reserva < ActiveRecord::Base
 belongs_to :couch
+belongs_to :user
 validate :validar_fecha_ocupada
 validate :validar_fecha_invalida
 default_scope -> { order("inicio") }
-
+scope :pendientes, -> { where confirmada: false}
+scope :confirmadas, -> { where confirmada: true}
 @errors = nil
 
 

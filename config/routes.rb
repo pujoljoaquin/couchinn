@@ -5,18 +5,26 @@ Rails.application.routes.draw do
   resources :couches
   resources :configurations
   resources :couch_types
-  resources :reservas
+  resources :reservas do
+    get :aceptar, on: :member
+    get :rechazar, on: :member
+    get :cancelar, on: :member
+    
+  end 
+  resources :premiums
   #devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   root 'couches#index'
   devise_scope :user do
     get '/users/show', to: 'registrations#show'
+    get '/solicitudes', to:'registrations#missolicitudes'
+    get '/misreservas', to: 'registrations#misreservas'
   end
   get '/couchinn', to: 'main#index'
   #get '/serPremium', to: 'premium#index'
-  resources :premiums
+ 
   get '/couch/reservas', to:'couches#indexreservas'
-
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

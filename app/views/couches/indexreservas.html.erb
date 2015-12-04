@@ -1,6 +1,6 @@
 <body>
 	<center>
-		<h1 style="color:#6B8E23;" class="text-center"> <strong>Mis reservas </strong></h1>
+		<h1 style="color:#6B8E23;" class="text-center"> Mis reservas </h1>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 <table class = "table center">
@@ -9,14 +9,15 @@
 		<th> Fecha de entrada </th>
 		<th> Fecha de salida </th>
 		<th> Estado </th>
+		<th></th>
 	</tr>
 
 
 	<% @couch.reservas.all.each do |reserva| %>
 		
 		<tr>
-			<td><p><%= User.find(reserva.user_id).nombre%>
-				<%= User.find(reserva.user_id).apellido%></p>
+			<td><p><%= reserva.user.nombre%>
+				<%= reserva.user.apellido%></p>
 			</td>
 
 			<td> <%= reserva.inicio.day %>/<%= reserva.inicio.month %>/<%= reserva.inicio.year %> </td>
@@ -28,7 +29,15 @@
 					Pendiente
 				<%end%>
 			</td>
-				
+			<td>
+			<%if !reserva.confirmada%>
+				<%= link_to "Aceptar", method: :aceptar, class: 'btn btn-success btn-sm' %>
+				<%= link_to "Rechazar", method: :rechazar, class: 'btn btn-success btn-sm' %> 
+			<%else%>
+				<%= link_to "Cancelar", method: :cancelar, class: 'btn btn-success btn-sm' %>
+			<%end%>
+			</td>
+		</tr>	
 
 	<% end %>
 	<% if @couch.reservas.count == 0 %>

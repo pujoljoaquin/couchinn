@@ -1,5 +1,10 @@
 <body>
 <center>
+  <% if notice %>
+  <div class="alert alert-success tipoRegistroCentro" role="alert">
+  <strong><%= notice %></strong>
+  </div>
+  <% end %>
     <h1 style="color:#6B8E23;" class="text-center"> 
     <strong><%= @couch.nombre %> </strong></h1>
     <h4> <i> <%= @couch.lugar %></i></small></h4>  

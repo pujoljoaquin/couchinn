@@ -1,0 +1,68 @@
+<body>
+	<center>
+		<h1 style="color:#6B8E23;" class="text-center"> Reservas pendientes</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+<table class = "table center">
+	<tr>
+		<th> Couch </th>
+		<th> Fecha de entrada </th>
+		<th> Fecha de salida </th>
+		<th> Estado </th>
+	</tr>
+
+
+	<% current_user.reservas.all.each do |reserva| %>
+		<%if !reserva.confirmada%>
+		<tr>
+			<td> <%= reserva.couch.nombre %>
+			<td> <%= reserva.inicio.day %>/<%= reserva.inicio.month %>/<%= reserva.inicio.year %> </td>
+			<td> <%=reserva.fin.day %>/<%= reserva.fin.month %>/<%= reserva.fin.year %> </td>
+			<td>Pendiente</td>
+		</tr>
+		<%end%>
+
+	<% end %>
+	<% if current_user.reservas.count == 0 %>
+		<tr> <td colspan="3"> No hay reservas pendientes </td> </tr>
+	<% end %>
+</table>
+</div>
+</div>
+</center>
+
+
+<center>
+	<h1 style="color:#6B8E23;" class="text-center">Reservas confirmadas</h1>
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<table class = "table center">
+	<tr>
+		<th> Couch </th>
+		<th> Fecha de entrada </th>
+		<th> Fecha de salida </th>
+		<th> Estado </th>
+	</tr>
+
+
+	<% current_user.reservas.all.each do |reserva| %>
+		<%if reserva.confirmada%>
+		<tr>
+			<td> <%= reserva.couch.nombre %>
+			<td> <%= reserva.inicio.day %>/<%= reserva.inicio.month %>/<%= reserva.inicio.year %> </td>
+			<td> <%=reserva.fin.day %>/<%= reserva.fin.month %>/<%= reserva.fin.year %> </td>
+			<td>Confirmada</td>
+		</tr>
+		<%end%>
+
+	<% end %>
+	<% if current_user.reservas.count == 0 %>
+		<tr> <td colspan="3"> No hay reservas confirmadas </td> </tr>
+	<% end %>
+	<tr><td class="center-block" colspan="3"><%= link_to "Atrás", :back, class: 'btn btn-success btn-sm' %></td></tr>
+
+</table>
+</div>
+</div>
+</center>
+</body>
