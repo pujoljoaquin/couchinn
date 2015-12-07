@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :couches, dependent: :destroy
   has_many :reservas, dependent: :destroy
+  has_many :consultas
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :nombre, :apellido, :fechaNac, :nacionalidad, :nombreUsuario, :message => "Dato obligatorio"
@@ -25,4 +27,5 @@ class User < ActiveRecord::Base
     end
     self.save
   end
+  
 end

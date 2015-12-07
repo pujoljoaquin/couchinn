@@ -1,6 +1,51 @@
-
 <body class="bgcolor">
 
+<% if user_signed_in? %>
+
+<% novistas=0 %>
+<% current_user.couches.each do |couch| %>
+  <% novistas = novistas + couch.reservas.novistas.count %>
+<% end %>
+<% novistas = novistas + current_user.reservas.novistas.count %>
+
+<% if novistas != 0 %>
+<div class="container bggreen">
+  <h2 style="color:white"> Se actualizaron tus reservas! </h2>
+  
+  <!-- reservas sobre mis couches -->
+  <% current_user.couches.each do |couch| %>
+    <% if couch.reservas.novistas.count != 0 %>
+      <% couch.reservas.novistas.each do |reserva| %>
+         <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue cancelada por <%= reserva.user.nombre %> <%= reserva.user.apellido %>
+        <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <!-- solicitudes -->
+  <% if current_user.reservas.novistas.count != 0 %>
+    <%  current_user.reservas.novistas.each do |reserva| %>
+      <% if reserva.cancelada %>
+        <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue cancelada por su dueño
+        <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
+      <% else %>
+        <% if reserva.confirmada %>
+          <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue confirmada
+          <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
+        <% else %>
+          <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue rechazada 
+          <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>  
+<% end %>
+
+<% end %>
+
+
+</br>
 <div class="container"> 
   <div class="row"> 
     <div class="jumbotron">
@@ -76,7 +121,7 @@
       <% @couches.each do |couch| %>
 
         <div class="media"> 
-          <!-- VER href=# entre a y class -->
+
           <div class="pull-left">
             <img class="img-rounded" class="media-object" src= <%= couch.imagen %>  alt="imagen" style="width:200px;height:150px" >
           </div>

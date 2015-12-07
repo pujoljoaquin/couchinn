@@ -13,6 +13,7 @@
 		<%= label_tag :nombre, "Titular de la tarjeta" %><br />
 		<%= text_field_tag :nombre, "", :pattern => '^[a-zA-Z ]+', title: 'Se permiten solo letras', :required => "required"%>
 		
+		<br />
 		<%= label_tag :numeroTarjeta, "Numero de la tarjeta" %><br />
 		<%= text_field_tag :numeroTarjeta, "", placeholder: '16 números, sin guión', :pattern => '^\d{16}$', title: 'Formato inválido', :required => "required" %>
 		<br />

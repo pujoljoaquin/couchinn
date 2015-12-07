@@ -2,18 +2,21 @@ Rails.application.routes.draw do
 
   get  'couh_types/index'
   get 'couches/index'
-  resources :couches
+  resources :couches 
   resources :configurations
   resources :couch_types
+
   resources :reservas do
     get :aceptar, on: :member
     get :rechazar, on: :member
     get :cancelar, on: :member
-    
+    get :visto, on: :member
   end 
   resources :premiums
+  resources :consultas
+
   #devise_for :users
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions", :passwords => "passwords"}
   root 'couches#index'
   devise_scope :user do
     get '/users/show', to: 'registrations#show'

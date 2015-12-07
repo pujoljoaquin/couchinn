@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119193236) do
+ActiveRecord::Schema.define(version: 20151206194717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "consulta", force: true do |t|
+    t.text     "pregunta"
+    t.text     "respuesta"
+    t.datetime "fechaPregunta"
+    t.datetime "fechaRespuesta"
+    t.integer  "user_id"
+    t.integer  "couch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "userCouch"
+    t.boolean  "respuestaVista", default: false
+  end
 
   create_table "couch_types", force: true do |t|
     t.string   "nombre"
@@ -57,6 +70,9 @@ ActiveRecord::Schema.define(version: 20151119193236) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visto",      default: true
+    t.boolean  "cancelada",  default: false
+    t.boolean  "rechazada",  default: false
   end
 
   create_table "users", force: true do |t|

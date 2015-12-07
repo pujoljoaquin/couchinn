@@ -1,0 +1,23 @@
+<div class="container">
+	<h1 style="color:#6B8E23;" class="text-center"> Realizar una consulta </h1>
+	<br>
+	<%= form_for (@consulta), url: consultas_path do |f| %>
+		<div class="row">	
+	  	<div class="col-md-3 col-md-offset-4" >
+	      
+	      <%= f.label :pregunta, 'Consulta'%>
+	  	  <%= f.text_area :pregunta, required: true, class: 'form-control', placeholder: 'Ingrese su consulta', :cols => "15", :rows => "5"  %>
+
+	  	  <%= f.hidden_field :couch_id%>
+	  	  <%= f.hidden_field :user_id%>
+	  	</div>
+	  </div>
+		<br>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-4">
+				<%= f.submit "Aceptar", class: 'btn btn-success' %>
+				<%= link_to "Cancelar", :back, class: 'btn btn-success' %>
+			</div>
+		</div>
+	<% end %>
+</div>	

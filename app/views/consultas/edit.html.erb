@@ -1,0 +1,27 @@
+<div class="container">
+	<h1 style="color:#6B8E23;" class="text-center"> Responder la consulta de <%= User.find(@consulta.user_id).nombreUsuario %> </h1>
+	<br>
+	<div class="row">	
+		<div class="col-md-3 col-md-offset-4" >
+			<h5><strong> Consulta </strong></h5>
+			<p> <%= @consulta.pregunta %> </p>
+		</div>
+	</div>
+	<%= form_for (@consulta), url: consulta_path, :method => :PATCH do |f| %>
+		<div class="row">	
+	  	<div class="col-md-3 col-md-offset-4" >
+	      
+	      <h5><%= f.label :respuesta, 'Respuesta'%></h5>
+	  	  <%= f.text_area :respuesta, required: true, class: 'form-control', placeholder: 'Ingrese su respuesta', :cols => "15", :rows => "5"  %>
+
+	  	</div>
+	  </div>
+		<br>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-4">
+				<%= f.submit "Responder", class: 'btn btn-success' %>
+				<%= link_to "Cancelar", :back, class: 'btn btn-success' %>
+			</div>
+		</div>
+	<% end %>
+</div>

@@ -1,6 +1,14 @@
 class CouchesController < ApplicationController
 
 def show
+	if(URI(request.referer).path == '/consultas')
+		consultas = Consulta.all
+		consultasCouch = consultas.where(couch_id: params[:id])
+		consultasUser = consultasCouch.where(user_id: current_user)
+		consultasUser.each do |c|
+			c.vista
+		end
+	end
 	@couch = Couch.find(params[:id])
 end	
 
@@ -30,18 +38,7 @@ end
 def indexreservas
 	@couch = Couch.find(params[:couch_id])
 end
-def aceptar
-    Reserva.find(params[:reserva_id]).confirmada==true
-    redirect_to misreservas_path
-end
-def rechazar
-    Reserva.find(params[:reserva_id]).destroy
-    redirect_to misreservas_path, notice: "La reserva ha sido rechazada"
-end
-def cancelar
-    Reserva.find(params[:reserva_id]).destroy
-    redirect_to misreservas_path, notice: "La reserva ha sido cancelada"
-end	
+
 #	@couches = Couch.all.prioridades
 
 #	if lugar != nil 

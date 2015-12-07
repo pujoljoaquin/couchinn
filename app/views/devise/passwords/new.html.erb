@@ -1,16 +1,22 @@
-<h2>Forgot your password?</h2>
+<h2 class="tipoRegistroCentro">¿Has olvidado tu contraseña?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
+ 
+  <div class="field tipoRegistroCentro">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, placeholder: 'Ingrese su email', required: true %>
+    <% if resource.errors.messages[:email] && !resource.errors.messages[:email].empty? %>
+    	<p style="color:red"><strong><%= "El email no es válido" %></p>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <br />
+  <div class="actions tipoRegistroCentro">
+    <%= f.submit "Enviar instrucciones para resetear mi contraseña" %>
   </div>
 <% end %>
 
+<br />
+<div class="tipoRegistroCentro">
 <%= render "devise/shared/links" %>
+</div>

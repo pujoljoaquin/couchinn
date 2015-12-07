@@ -6,6 +6,7 @@ validate :validar_fecha_invalida
 default_scope -> { order("inicio") }
 scope :pendientes, -> { where confirmada: false}
 scope :confirmadas, -> { where confirmada: true}
+scope :novistas, -> { where visto: false}
 @errors = nil
 
 
