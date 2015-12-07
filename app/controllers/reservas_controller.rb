@@ -1,4 +1,9 @@
 class ReservasController < ApplicationController
+before_action :get_reserva, only: [:aceptar, :rechazar, :cancelar, :visto]
+
+def get_reserva
+    @reserva = Reserva.find(params[:id])
+end
 
 def new
 	@reserva = Reserva.new
@@ -21,32 +26,32 @@ def show
 end
 
 def aceptar
-    r = Reserva.find(params[:id])
-    r.confirmada = true
-    r.visto = false
-    r.save
-    redirect_to misreservas_path
+    @reserva.confirmada = true
+    @reserva.visto = false
+    @reserva.save
+    redirect_to misreservas_path, notice: "La reserva ha sido confirmada"
 end
+
 def rechazar
-    @reserva = Reserva.find(params[:id])
     @reserva.rechazada = true
+    @reserva.confirmada = true
     @reserva.visto = false
     @reserva.save
     redirect_to misreservas_path, notice: "La reserva ha sido rechazada"
 end
+
 def cancelar
-    @reserva = Reserva.find(params[:id])
     @reserva.cancelada = true
     @reserva.visto = false
     @reserva.save
-    if @reserva.couch.user.id == current_user.id
-    	redirect_to misreservas_path, notice: "La reserva ha sido cancelada"
+    if @reserva.couch.user.id == current_user.id    
+        redirect_to misreservas_path, notice: "La reserva ha sido cancelada"
     else
-    	redirect_to solicitudes_path, notice: "La reserva ha sido cancelada"
+        redirect_to solicitudes_path, notice: "La reserva ha sido cancelada"
     end
-end	
+end
+
 def visto
-	@reserva=Reserva.find(params[:id])
 	@reserva.visto = true
 	@reserva.save
 	if @reserva.cancelada || @reserva.rechazada
