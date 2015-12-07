@@ -14,7 +14,7 @@
   
   <!-- reservas sobre mis couches -->
   <% current_user.couches.each do |couch| %>
-    <% if couch.reservas.novistas.count != 0 %>
+    <% if  couch.reservas.novistas.count != 0 %>
       <% couch.reservas.novistas.each do |reserva| %>
          <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue cancelada por <%= reserva.user.nombre %> <%= reserva.user.apellido %>
         <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
@@ -31,7 +31,7 @@
       <% else %>
         <% if reserva.confirmada %>
           <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue confirmada
-          <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
+          <%= link_to 'Aceptar', visto_reserva_path(reserva.id), class: "btn btn-default btn-xs" %></h4>
         <% else %>
           <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue rechazada 
           <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>

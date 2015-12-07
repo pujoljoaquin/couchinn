@@ -44,13 +44,13 @@ def cancelar
     else
     	redirect_to solicitudes_path, notice: "La reserva ha sido cancelada"
     end
-end	
+end
+
 def visto
-	@reserva=Reserva.find(params[:id])
-	@reserva.visto = true
-	@reserva.save
-	if @reserva.cancelada || @reserva.rechazada
-		@reserva.destroy
+	r = Reserva.find(params[:id])
+	r.vista
+	if r.cancelada || r.rechazada
+		r.destroy
 	end
 	redirect_to couches_path
 end
