@@ -29,7 +29,12 @@
 
 		<%= label_tag :fechaVencimiento, "Fecha de vencimiento" %><br />
 		<%= date_select :fechaVencimiento, :fechaVencimiento, order: [:month, :year], use_month_numbers: true, :start_year => Time.now.year, :end_year => Time.now.year + 10 %>
+
 		<br />
+		<br />
+		<strong><p> Total: $400 </p></strong>
+		<%= hidden_field_tag :aux, :precio, :value => 400 %>
+		
 		<br />
 		<%= submit_tag "Pagar", class: 'btn btn-default btn-sm' %>
 		<%= link_to "Cancelar", :back, class: 'btn btn-default btn-sm' %>

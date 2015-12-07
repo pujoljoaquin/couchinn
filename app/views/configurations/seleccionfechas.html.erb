@@ -1,16 +1,25 @@
 <div class="container">
-	<%= form_tag 'configurations/seleccionfechas', method: :get do %>
+	<%= form_tag 'usuariosregistrados', method: :get do %>
+		<h1 style="color:#6B8E23;" class="tipoRegistroCentro"> Seleccione las fechas </h1>
 		
-		<br />
-		<%= label_tag :comienzo, "Fecha de inicio" %><br />
-		<%= date_select :comienzo, :comienzo, order: [:day, :month, :year], use_month_numbers: true, :start_year => Time.now.year - 2, :end_year => Time.now.year %>
+		<div class="field tipoRegistroCentro">
+			<br />
+			<%= label_tag :comienzo, "Fecha de inicio" %><br />
+			<%= date_select :aux1, :comienzo, order: [:day, :month, :year], use_month_numbers: true, :start_year => Time.now.year - 2, :end_year => Time.now.year %>
+		</div>	
 
-		<br />	
-		<%= label_tag :fin, "Fecha de fin" %><br />
-		<%= date_select :fin, :fin, order: [:day, :month, :year], use_month_numbers: true, :start_year => Time.now.year - 2, :end_year => Time.now.year %>
+		<div class="field tipoRegistroCentro">
+			<br />	
+			<%= label_tag :fin, "Fecha de fin" %><br />
+			<%= date_select :aux2, :fin, order: [:day, :month, :year], use_month_numbers: true, :start_year => Time.now.year - 2, :end_year => Time.now.year %>
+		</div>
 
-		<%= submit_tag "Ver usuarios registrados", class: 'btn btn-default btn-sm' %>
-		<%= submit_tag "Ver dinero recaudado", class: 'btn btn-default btn-sm' %>
-		<%= link_to "Cancelar", :back, class: 'btn btn-default btn-sm' %>
+		<div class="actions tipoRegistroCentro">
+			<br />
+			<%= submit_tag "Ver usuarios registrados", class: 'btn btn-default btn-sm' %>
+			<%= submit_tag "Ver dinero recaudado", class: 'btn btn-default btn-sm' %>
+			<br />
+			<br />
+			<%= link_to "Cancelar", :back, class: 'btn btn-default btn-sm' %>
 	<% end %>
 </div>

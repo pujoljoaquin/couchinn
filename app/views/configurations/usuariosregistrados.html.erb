@@ -1,0 +1,63 @@
+<body>
+	<center>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1 style="color:#6B8E23;" class="text-center">Usuarios registrados</h1>
+			<% if(@fin < @inicio) %>
+				<div class="alert alert-warning">
+					<h5 class="tipoRegistro" style="color:red"><strong> Ha ingresado un rango de fechas inválido. Por favor ingrese una fecha de fin mayor a la de inicio. </strong></h5>
+				</div>
+			<% else %>
+				<% if(@inicio > Date.today) %>
+					<div class="alert alert-warning">
+						<h5 class="tipoRegistro" style="color:red"><strong> Ha ingresado un rango de fechas inválido. Por favor ingrese una fecha de inicio menor al dia de hoy.</strong></h5>
+					</div>		
+				<% else %>
+					<% if (@premium) %>
+						<% total = 0 %>
+						<% usuariosPremium = User.all.where(esPremium: true) %>
+						<% aux = usuariosPremium.where('"users"."fechaPremium" >= ? ', @inicio) %>
+						<% todos = aux.where('"users"."fechaPremium" <= ?', @fin) %>
+					<% else %>
+						<% u = User.all.where("created_at >= ? ", @inicio) %>
+						<% todos = u.where("created_at <= ?", @fin) %>
+					<% end %>
+					<% usuarios = todos.where(esAdmin: nil) %>
+					<br />
+					<table class = "table center">
+						
+						<tr>
+							<th> Usuario </th>
+							<th> Nombre de usuario </th>
+							<th> Fecha de creacion </th>
+							 <% if (@premium) %>
+								<th> Abono </th>
+							<% end %> 
+						</tr>
+
+						<% usuarios.each do |usuario| %>
+							
+							<tr>
+								<td><p><%= usuario.nombre%>
+									<%= usuario.apellido%></p>
+								</td>
+
+								<td> <%= usuario.nombreUsuario %> </td>
+								<td> <%= usuario.created_at.day %>/<%= usuario.created_at.month %>/<%= usuario.created_at.year %> </td>
+								<% if (@premium) %>
+									<td> <%= usuario.precioPremium %> </td>
+									<% total = total + usuario.precioPremium %>
+								<% end %> 
+							</tr>
+						<% end %>
+
+					</table>
+					<% if (@premium) %>
+						<h4><strong> Total recaudado: $ <%= total %></strong></h4>
+					<% end %>
+				<%end %>
+			<% end %>
+		</div>
+	</div>
+	</center>
+</body>

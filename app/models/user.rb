@@ -17,8 +17,9 @@ class User < ActiveRecord::Base
   	end
   end	
 
-  def serPremium
+  def serPremium(precio)
     self.esPremium = true
+    self.precioPremium = precio
     self.fechaPremium = Time.now
     couchesUser = self.couches
     couchesUser.each do |couch|

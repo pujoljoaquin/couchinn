@@ -16,7 +16,7 @@ if cletus.nil?
 end
 cristina =  User.find_by(nombre: 'Cristina')
 if cristina.nil?
-	cristina = User.create(nombre:"Cristina", apellido:"Kirchner",fechaNac:(Date.today - 50.years), email:"lacris@hotmail.com", nombreUsuario:"cristina", nacionalidad:"Argentina", masculino: false, esPremium:true,password:"12345678", password_confirmation: "12345678", foto:"http://www.ellitoralconcordia.com/wp-content/uploads/cristina-kirchner20.jpg" )
+	cristina = User.create(nombre:"Cristina", apellido:"Kirchner",fechaNac:(Date.today - 50.years), email:"lacris@hotmail.com", nombreUsuario:"cristina", nacionalidad:"Argentina", masculino: false, esPremium:true, precioPremium: 400, fechaPremium: "2015-11-25",password:"12345678", password_confirmation: "12345678", foto:"http://www.ellitoralconcordia.com/wp-content/uploads/cristina-kirchner20.jpg" )
 end
 susana = User.find_by(nombre: 'Susana')
 if susana.nil?

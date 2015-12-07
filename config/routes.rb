@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get  'couh_types/index'
   get 'couches/index'
   resources :couches
-  resources :configurations
+  resources :configurations do
+    get :seleccionfechas, on: :collection
+    get :usuariosregistrados, on: :collection
+  end
   resources :couch_types
   resources :reservas
   resources :consultas
@@ -17,7 +20,6 @@ Rails.application.routes.draw do
   #get '/serPremium', to: 'premium#index'
   resources :premiums
   get '/couch/reservas', to:'couches#indexreservas'
-  get '/configurations/seleccionfechas', to: 'configurations#seleccionfechas'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
