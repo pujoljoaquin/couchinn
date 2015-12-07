@@ -9,11 +9,9 @@ Rails.application.configure do
     port: 587,
     #domain: 'gmail.com',
     authentication: "plain",
-    #enable_starttls_auto: true,
-    #user_name: "joaquin.pujol95@gmail.com",
-    #password: "38835321"
-    user_name: "",
-    password: ""
+    enable_starttls_auto: true,
+    user_name: "joaquin.pujol95@gmail.com",
+    password: "38835321"
   }
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
