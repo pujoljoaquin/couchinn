@@ -3,10 +3,16 @@
 		<h1 style="color:#6B8E23;" class="text-center"> Reservas sobre mis Couches</h1>
 		
 		<% if notice %>
-		<div class="alert alert-warning">
-            <h4 class="tipoRegistroCentro" style="color:red"><%=notice%></h4>
-        </div>
-        <%end%>
+			<% if (URI(request.referer).path == '/aceptar') %>
+				<div class="alert alert-success">
+					<h4 class="tipoRegistroCentro" style="color:red"><%=notice%></h4>
+				</div>
+			<% else %>
+				<div class="alert alert-warning">
+            		<h4 class="tipoRegistroCentro" style="color:red"><%=notice%></h4>
+        		</div>
+        	<%end%>
+        <% end %>
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">

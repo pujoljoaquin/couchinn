@@ -29,12 +29,13 @@
         <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue cancelada por su dueño
         <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
       <% else %>
-        <% if reserva.confirmada %>
-          <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue confirmada
-          <%= link_to 'Aceptar', visto_reserva_path(reserva.id), class: "btn btn-default btn-xs" %></h4>
-        <% else %>
+        <% if reserva.rechazada %>
           <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue rechazada 
           <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
+        <% else %>
+          <h4 style="color:white"> La reserva sobre el couch <%= reserva.couch.nombre %> fue confirmada
+          <%= link_to 'Aceptar', visto_reserva_path(reserva), class: "btn btn-default btn-xs" %></h4>
+          
         <% end %>
       <% end %>
     <% end %>
