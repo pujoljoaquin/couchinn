@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { :host => 'https://couchinnsoft.herokuapp.com/' }
+  #config.action_mailer.default_url_options = { :host => 'https://couchinnsoft.herokuapp.com/' }
   Rails.application.routes.default_url_options[:host] = 'https://couchinnsoft.herokuapp.com'
 
   config.action_mailer.delivery_method = :smtp
@@ -14,9 +14,11 @@ Rails.application.configure do
     port: 587,
     #domain: 'gmail.com',
     authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "joaquin.pujol95@gmail.com",
-    password: "38835321"
+    #enable_starttls_auto: true,
+    #user_name: "joaquin.pujol95@gmail.com",
+    #password: "38835321"
+    user_name: "",
+    password: ""
   }
 
   # Code is not reloaded between requests.
