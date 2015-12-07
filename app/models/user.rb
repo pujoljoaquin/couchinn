@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :couches, dependent: :destroy
   has_many :reservas, dependent: :destroy
   has_many :consultas
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :nombre, :apellido, :fechaNac, :nacionalidad, :nombreUsuario, :message => "Dato obligatorio"

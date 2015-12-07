@@ -43,9 +43,11 @@ rosada = Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", d
 puts "Creo las reservas"
 Reserva.find_or_create_by(inicio: "2016-01-01", fin: "2016-01-15", user:cletus, couch:rosada, confirmada:true);
 Reserva.find_or_create_by(inicio: "2016-02-01", fin: "2016-02-15", user:cristina, couch:choza, confirmada:true);
-Reserva.find_or_create_by(inicio: "2016-01-10" , fin: "2016-01-20", user:cristina, couch:casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-10" , fin: "2016-02-20", user:cristina, couch:casa_lago, confirmada:true);
 Reserva.find_or_create_by(inicio: "2016-02-18" , fin: "2016-02-23", user:susana, couch:choza, confirmada:true);
 Reserva.find_or_create_by(inicio: "2016-02-20", fin: "2016-02-25", user:susana, couch:rosada, confirmada:true);
 Reserva.find_or_create_by(inicio: "2016-03-01" , fin: "2016-03-15", user:cletus, couch:casa_lago, confirmada:true);
 Reserva.find_or_create_by(inicio: "2016-01-10" , fin: "2016-01-19", user:cristina, couch:casa_lago, confirmada:true);
-
+Reserva.find_or_create_by(inicio: "2016-03-20", fin: "2016-03-25", user:cletus, couch:rosada, confirmada:false);
+Reserva.find_or_create_by(inicio: "2016-05-20" , fin: "2016-05-25", user:susana, couch:rosada, confirmada:false);
+Reserva.find_or_create_by(inicio: "2016-03-20" , fin: "2016-03-25", user:cristina, couch:casa_lago, confirmada:false);

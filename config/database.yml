@@ -23,11 +23,14 @@ default: &default
 
   password: 38835321
 
+
 development:
   <<: *default
   database: couchinn_development
   username: postgres
+
   password: 38835321
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -63,7 +66,9 @@ test:
   <<: *default
   database: couchinn_test
   username: postgres
+
   password: 38835321
+
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -90,4 +95,5 @@ production:
   #username: couchinn
   #password: <%= ENV['COUCHINN_DATABASE_PASSWORD'] %>
   username: postgres
+
   password: 38835321

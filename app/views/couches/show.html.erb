@@ -1,5 +1,10 @@
 <body>
 <center>
+  <% if notice %>
+  <div class="alert alert-success tipoRegistroCentro" role="alert">
+  <strong><%= notice %></strong>
+  </div>
+  <% end %>
     <h1 style="color:#6B8E23;" class="text-center"> 
     <strong><%= @couch.nombre %> </strong></h1>
     <h4> <i> <%= @couch.lugar %></i></small></h4>  
@@ -37,13 +42,7 @@
         <button class="btn btn-default btn-sm" type="button">
           <%= link_to 'Reservar', new_reserva_path(:couch_id => @couch.id), class: "btn-default" %>
         </button>
-      <%else%>
-        <% if ((user_signed_in?) && (current_user == @couch.user)) then %>
-        <button class="btn btn-default btn-sm" type="button">
-          <%= link_to 'Mis reservas', couch_reservas_path(:couch_id => @couch.id), class: "btn-default" %>
-        </button>
-        <% end %>
-      <%end%>
+      <% end %>
     </p>
     
 
