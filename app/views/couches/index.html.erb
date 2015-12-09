@@ -129,8 +129,19 @@
             <h4 class="media-heading"><%= couch.nombre %> <small><i> <%= couch.lugar %></i></small></h4>
             <p> <%= couch.descripcion %> </p>
             <p> Capacidad: <%= couch.capacidad %></p>
-            <p> Puntuacion: <%= couch.puntuacion %></p>        
-            <button class="btn btn-success btn-xs" type="button">
+            <% 
+            total=0 
+            Puntuacion.where('couch_id = ?', couch.id).each do |p|
+                total = p.valor + total
+            end
+            if Puntuacion.where('couch_id = ?', couch.id).count == 0
+                 couch.puntuacion = 0
+            else
+                couch.puntuacion = total / Puntuacion.where('couch_id = ?', couch.id).count
+            end%>     
+            <p> Puntuacion: <%= couch.puntuacion %></p> 
+
+             <button class="btn btn-success btn-xs" type="button">
                 <%= link_to 'Ver más', couch_path(couch.id), class: "btn btn-success btn-xs" %>
             </button>
               

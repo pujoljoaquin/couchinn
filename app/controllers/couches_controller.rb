@@ -1,7 +1,7 @@
 class CouchesController < ApplicationController
 
 def show
-	#id = params[:id]
+	id = params[:id]
 	if(URI(request.referer).path == '/consultas')
 		consultas = Consulta.all
 		consultasCouch = consultas.where(couch_id: params[:id])
@@ -10,15 +10,18 @@ def show
 			c.vista
 		end
 	end
+	total=0
 	@couch = Couch.find(params[:id])
-#	Puntuacion.where('couch_id = ?', id).each do |p|
-#		total = p.valor + total
-#	end
-#	if Puntuacion.count == 0
-#		@couch.puntuacion = 0
-#	else
-#		@couch.puntuacion = total / Puntuacion.count
-#	end
+	Puntuacion.where('couch_id = ?', id).each do |p|
+		total = p.valor + total
+
+	end
+
+	if Puntuacion.where('couch_id = ?', id).count == 0
+		@couch.puntuacion = 0
+	else
+	@couch.puntuacion = total / Puntuacion.where('couch_id = ?', id).count
+	end
 end	
 
 def edit

@@ -25,7 +25,18 @@
 		 			<p> <%= edad %> años </p>
 		 			<p> <%= current_user.email %> </p>
 		 			<p> <%= current_user.nacionalidad %> </p>
-		 			<p> Puntuación </p>
+		 			<% 
+			            total=0 
+			            Puntuacion.where('user_id = ?', current_user.id).each do |p|
+			                total = p.valor + total
+			            end
+			            if Puntuacion.where('user_id = ?',current_user.id).count == 0
+			                 tot = 0
+			            else
+			               tot = total / Puntuacion.where('user_id = ?', current_user.id).count
+			            end%>   
+		 			<p> Puntuación : <%= tot %> </p>
+
 		 			<button class="btn btn-success btn-xs" type="button">
 	            		<%= link_to 'Editar perfil', edit_user_registration_path, class: "btn btn-success btn-xs" %>
 	          		</button>
@@ -69,6 +80,16 @@
       					</div>
       					<div class="media-body">
         					<h4 class="media-heading"><%= couch.nombre %> <small><i> <%= couch.lugar %></i></small></h4>
+				        					<% 
+				            total=0 
+				            Puntuacion.where('couch_id = ?', couch.id).each do |p|
+				                total = p.valor + total
+				            end
+				            if Puntuacion.where('couch_id = ?', couch.id).count == 0
+				                 couch.puntuacion = 0
+				            else
+				                couch.puntuacion = total / Puntuacion.where('couch_id = ?', couch.id).count
+				            end%>     
         					<p> Puntuacion: <%= couch.puntuacion %></p>
         					
         					<button class="btn btn-success btn-xs" type="button">
