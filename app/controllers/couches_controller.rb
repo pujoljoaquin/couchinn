@@ -2,6 +2,14 @@ class CouchesController < ApplicationController
 
 def show
 	#id = params[:id]
+	if(URI(request.referer).path == '/consultas')
+		consultas = Consulta.all
+		consultasCouch = consultas.where(couch_id: params[:id])
+		consultasUser = consultasCouch.where(user_id: current_user)
+		consultasUser.each do |c|
+			c.vista
+		end
+	end
 	@couch = Couch.find(params[:id])
 #	Puntuacion.where('couch_id = ?', id).each do |p|
 #		total = p.valor + total

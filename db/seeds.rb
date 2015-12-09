@@ -16,7 +16,7 @@ if cletus.nil?
 end
 cristina =  User.find_by(nombre: 'Cristina')
 if cristina.nil?
-	cristina = User.create(nombre:"Cristina", apellido:"Kirchner",fechaNac:(Date.today - 50.years), email:"lacris@hotmail.com", nombreUsuario:"cristina", nacionalidad:"Argentina", masculino: false, esPremium:true,password:"12345678", password_confirmation: "12345678", foto:"http://www.ellitoralconcordia.com/wp-content/uploads/cristina-kirchner20.jpg" )
+	cristina = User.create(nombre:"Cristina", apellido:"Kirchner",fechaNac:(Date.today - 50.years), email:"lacris@hotmail.com", nombreUsuario:"cristina", nacionalidad:"Argentina", masculino: false, esPremium:true, precioPremium: 400, fechaPremium: "2015-11-25",password:"12345678", password_confirmation: "12345678", foto:"http://www.ellitoralconcordia.com/wp-content/uploads/cristina-kirchner20.jpg" )
 end
 susana = User.find_by(nombre: 'Susana')
 if susana.nil?
@@ -41,15 +41,6 @@ choza = Couch.find_or_create_by(couch_type:casa, nombre: "Choza de Cletus", desc
 rosada = Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", descripcion: "Donde vive la presidente de la nación", lugar: "Capital Federal", user:cristina, disponibilidad: false, capacidad: 1, esPremium: true)
 
 
-puts "Creo las reservas"
-Reserva.find_or_create_by(inicio: "2016-01-01", fin: "2016-01-15", user: cletus, couch: rosada, confirmada:true);
-Reserva.find_or_create_by(inicio: "2016-02-01", fin: "2016-02-15", user: cristina, couch: choza, confirmada:true);
-Reserva.find_or_create_by(inicio: "2016-01-10" , fin: "2016-01-20", user: cristina, couch: casa_lago, confirmada:true);
-Reserva.find_or_create_by(inicio: "2016-02-18" , fin: "2016-02-23", user: susana, couch: choza, confirmada:true);
-Reserva.find_or_create_by(inicio: "2016-02-20", fin: "2016-02-25", user: susana, couch: rosada, confirmada:true);
-Reserva.find_or_create_by(inicio: "2016-03-01" , fin: "2016-03-15", user: cletus, couch: casa_lago, confirmada:true);
-Reserva.find_or_create_by(inicio: "2016-01-10" , fin: "2016-01-19", user: cristina, couch: casa_lago, confirmada:true);
-
 puts "Creo reservas concluidas"
 Reserva.find_or_create_by(inicio: "2015-01-01", fin: "2015-01-15", user: cletus, couch: rosada, confirmada:true);
 Reserva.find_or_create_by(inicio: "2015-02-01", fin: "2015-02-15", user: cristina, couch: choza, confirmada:true);
@@ -58,3 +49,15 @@ Reserva.find_or_create_by(inicio: "2015-02-18" , fin: "2015-02-23", user: susana
 Reserva.find_or_create_by(inicio: "2015-02-20", fin: "2015-02-25", user: susana, couch: rosada, confirmada:true);
 Reserva.find_or_create_by(inicio: "2015-03-01" , fin: "2015-03-15", user: cletus, couch: casa_lago, confirmada:true);
 Reserva.find_or_create_by(inicio: "2015-01-10" , fin: "2015-01-19", user: cristina, couch: casa_lago, confirmada:true);
+
+puts "Creo las reservas"
+Reserva.find_or_create_by(inicio: "2016-01-01", fin: "2016-01-15", user:cletus, couch:rosada, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-01", fin: "2016-02-15", user:cristina, couch:choza, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-10" , fin: "2016-02-20", user:cristina, couch:casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-18" , fin: "2016-02-23", user:susana, couch:choza, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-20", fin: "2016-02-25", user:susana, couch:rosada, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-03-01" , fin: "2016-03-15", user:cletus, couch:casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-01-10" , fin: "2016-01-19", user:cristina, couch:casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-03-20", fin: "2016-03-25", user:cletus, couch:rosada, confirmada:false);
+Reserva.find_or_create_by(inicio: "2016-05-20" , fin: "2016-05-25", user:susana, couch:rosada, confirmada:false);
+Reserva.find_or_create_by(inicio: "2016-03-20" , fin: "2016-03-25", user:cristina, couch:casa_lago, confirmada:false);

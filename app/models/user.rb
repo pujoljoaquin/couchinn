@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :puntuacions
   has_many :reservas, dependent: :destroy
   has_many :couches, dependent: :destroy
+  has_many :reservas, dependent: :destroy
+  has_many :consultas
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :nombre, :apellido, :fechaNac, :nacionalidad, :nombreUsuario, :message => "Dato obligatorio"
@@ -17,8 +20,9 @@ class User < ActiveRecord::Base
   	end
   end	
 
-  def serPremium
+  def serPremium(precio)
     self.esPremium = true
+    self.precioPremium = precio
     self.fechaPremium = Time.now
     couchesUser = self.couches
     couchesUser.each do |couch|
@@ -26,4 +30,5 @@ class User < ActiveRecord::Base
     end
     self.save
   end
+  
 end

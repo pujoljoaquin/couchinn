@@ -12,11 +12,66 @@
     <% end %>
   </div> 
       <ul class="nav navbar-nav navbar-right">
-
       <% if user_signed_in? %>
+        <% cantidad = 0 %>
+        <% if (!current_user.consultas.empty?) %>
+          <% filtro = current_user.consultas.where("respuesta != ?", "") %>
+          <% cantidad = filtro.where(respuestaVista: false).count %>
+        <% end %>
+        <% if(!current_user.couches.empty?) %>
+          <% aux = Consulta.all.where(userCouch: current_user.id) %>
+          <% cantidad = cantidad + aux.where(respuesta: nil).count %>
+        <% end %>
+        <% if cantidad != 0 %>
+          <li><%= link_to 'Tiene consultas', consultas_path, :class => 'navbar-link' %></li>
+          <li><span class="badge notificacion"><%= cantidad %></span></li>
+        <% end %>
+        
+        <%reservas=0%>
+        <% current_user.couches.all.each do |couch| %>
+          <%reservas = reservas + couch.reservas.pendientes.count %>
+        <%end%>
+
+        <% suma=current_user.reservas.pendientes.count+reservas+current_user.reservas.confirmadas.novistas.count %>
+
+        <li role="presentation" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reservas 
+            <% if suma!= 0 %>
+              <span class="badge"><%= suma %></span> 
+            <% end %>
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to solicitudes_path do %>
+                Reservas pendientes
+                <% if current_user.reservas.pendientes.count != 0 %>
+                  <span class="badge notificacion2"><%= current_user.reservas.pendientes.count %></span>
+                <% end %>
+                <% end %>
+            </li>
+            <li>
+              <%= link_to solicitudes_path do %>
+                Reservas Confirmadas
+                <% if current_user.reservas.confirmadas.novistas.count != 0 %>
+                  <span class="badge notificacion2"><%= current_user.reservas.confirmadas.novistas.count %></span>
+                <% end %>
+                <% end %>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to misreservas_path do %>
+              Reservas sobre mis Couches
+              <% if reservas != 0 %>
+                <span class="badge notificacion2"><%= reservas %></span>
+              <% end %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+          
+
         <li> <%= link_to 'Nuevo Couch', new_couch_path, :class => 'navbar-link' %></li>
         <%if (current_user.esAdmin)%>
-         <li> <%= link_to 'Configuración', configurations_path, :class => 'navbar-link' %></li>
+         <li> <%= link_to 'Configuración', configurations_path, :class => 'navbar-link' %></li4
         <%end%>
         <% if (current_user.esPremium == false) %>
           <li><%= link_to 'Ser premium!', premiums_path, :class => 'navbar-link' %></li>

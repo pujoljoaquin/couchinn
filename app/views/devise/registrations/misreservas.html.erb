@@ -1,0 +1,77 @@
+<body>
+	<center>
+		<h1 style="color:#6B8E23;" class="text-center"> Reservas sobre mis Couches</h1>
+		
+		<% if notice %>
+			<% if (URI(request.referer).path == '/aceptar') %>
+				<div class="alert alert-success">
+					<h4 class="tipoRegistroCentro" style="color:red"><%=notice%></h4>
+				</div>
+			<% else %>
+				<div class="alert alert-warning">
+            		<h4 class="tipoRegistroCentro" style="color:red"><%=notice%></h4>
+        		</div>
+        	<%end%>
+        <% end %>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+<table class = "table center">
+	<tr>
+		<th> Couch </th>
+		<th> Usuario </th>
+		<th> Fecha de entrada </th>
+		<th> Fecha de salida </th>
+		<th> Estado </th>
+		<th></th>
+	</tr>
+
+	<% reservas = 0 %>
+	<% current_user.couches.all.each do |couch| %>
+		<% couch.reservas.all.each do |reserva| %>
+		<% reservas = reservas + 1 %>
+		<tr>
+			<td><%= reserva.couch.nombre %></td>
+			<td><p><%= reserva.user.nombre%>
+				<%= reserva.user.apellido%></p>
+			</td>
+ 			<td> <%= reserva.inicio.day %>/<%= reserva.inicio.month %>/<%= reserva.inicio.year %> </td>
+			<td><%= reserva.fin.day %>/<%= reserva.fin.month %>/<%= reserva.fin.year %> </td>
+			<% if reserva.cancelada %>
+				<td> Cancelada </td>
+				<td></td>
+			<% else %>
+				<% if reserva.rechazada %>
+					<td> Rechazada </td>
+					<td></td>
+				<% else %>
+					<% if reserva.confirmada %>
+						<td> Confirmada </td>
+						<td><%= link_to 'Cancelar', cancelar_reserva_path(reserva), class: 'btn btn-success btn-sm' %></td>
+					<% else %>
+						<td> Pendiente </td>
+						<td> 
+							<p>
+							<%= link_to 'Confirmar', aceptar_reserva_path(reserva), class: 'btn btn-success btn-sm' %>
+							<%= link_to 'Rechazar', rechazar_reserva_path(reserva), class: 'btn btn-success btn-sm'%>
+							</p> 
+						</td>
+					<% end %>
+				<% end %>
+			<% end %>
+		</tr>
+
+		<%end%>
+	<% end %>
+	
+	<% if reservas == 0 %>
+		<tr> <td colspan="3"> No hay reservas sobre mis Couches </td> </tr>
+	<% end %>
+
+	<tr><td class="center-block" colspan="3"><%= link_to "Atrás", :back, class: 'btn btn-success btn-sm' %></td></tr>
+
+</table>
+</div>
+</div>
+</center>
+</body>

@@ -13,6 +13,7 @@
 		<%= label_tag :nombre, "Titular de la tarjeta" %><br />
 		<%= text_field_tag :nombre, "", :pattern => '^[a-zA-Z ]+', title: 'Se permiten solo letras', :required => "required"%>
 		
+		<br />
 		<%= label_tag :numeroTarjeta, "Numero de la tarjeta" %><br />
 		<%= text_field_tag :numeroTarjeta, "", placeholder: '16 números, sin guión', :pattern => '^\d{16}$', title: 'Formato inválido', :required => "required" %>
 		<br />
@@ -28,7 +29,12 @@
 
 		<%= label_tag :fechaVencimiento, "Fecha de vencimiento" %><br />
 		<%= date_select :fechaVencimiento, :fechaVencimiento, order: [:month, :year], use_month_numbers: true, :start_year => Time.now.year, :end_year => Time.now.year + 10 %>
+
 		<br />
+		<br />
+		<strong><p> Total: $400 </p></strong>
+		<%= hidden_field_tag :aux, :precio, :value => 400 %>
+		
 		<br />
 		<%= submit_tag "Pagar", class: 'btn btn-default btn-sm' %>
 		<%= link_to "Cancelar", :back, class: 'btn btn-default btn-sm' %>

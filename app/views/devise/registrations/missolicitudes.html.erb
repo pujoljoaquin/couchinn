@@ -1,0 +1,84 @@
+<body>
+	<center>
+		<h1 style="color:#6B8E23;" class="text-center"> Reservas pendientes</h1>
+		<% if notice %>
+		<div class="alert alert-warning">
+            <h4 class="tipoRegistroCentro" style="color:red"><%=notice%></h4>
+        </div>
+        <%end%>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<table class = "table center">
+					<tr>
+						<th> Couch </th>
+						<th> Fecha de entrada </th>
+						<th> Fecha de salida </th>
+						<th> Estado </th>
+						<th></th>
+					</tr>
+
+
+					<% current_user.reservas.pendientes.each do |reserva| %>
+						<tr>
+							<td> <%= reserva.couch.nombre %></td>
+							<td> <%= reserva.inicio.day %>/<%= reserva.inicio.month %>/<%= reserva.inicio.year %> </td>
+							<td> <%=reserva.fin.day %>/<%= reserva.fin.month %>/<%= reserva.fin.year %> </td>
+							<% if reserva.cancelada %>
+								<td> Cancelada </td>
+								<td></td>
+							<% else %>
+								<td> Pendiente </td>
+								<td> <%= link_to "Cancelar", cancelar_reserva_path(reserva), class: 'btn btn-success btn-sm' %> </td>
+							<% end %>
+						</tr>
+
+					<% end %>
+					<% if current_user.reservas.pendientes.count == 0 %>
+						<tr> <td colspan="3"> No hay reservas pendientes </td> </tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
+	</center>
+
+
+<center>
+	<h1 style="color:#6B8E23;" class="text-center">Reservas confirmadas</h1>
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<table class = "table center">
+	<tr>
+		<th> Couch </th>
+		<th> Fecha de entrada </th>
+		<th> Fecha de salida </th>
+		<th> Estado </th>
+		<th></th>
+	</tr>
+
+
+	<% current_user.reservas.confirmadas.each do |reserva| %>
+		<tr>
+			<td> <%= reserva.couch.nombre %></td>
+			<td> <%= reserva.inicio.day %>/<%= reserva.inicio.month %>/<%= reserva.inicio.year %> </td>
+			<td> <%=reserva.fin.day %>/<%= reserva.fin.month %>/<%= reserva.fin.year %> </td>
+			<% if reserva.cancelada %>
+				<td> Cancelada </td>
+				<td></td>
+			<% else %>
+				<td> Confirmada </td>
+				<td> <%= link_to "Cancelar", cancelar_reserva_path(reserva), class: 'btn btn-success btn-sm' %> </td>
+			<% end %>
+		</tr>
+		
+
+	<% end %>
+	<% if current_user.reservas.confirmadas.count == 0 %>
+		<tr> <td colspan="3"> No hay reservas confirmadas </td> </tr>
+	<% end %>
+	<tr><td class="center-block" colspan="3"><%= link_to "Atrás", :back, class: 'btn btn-success btn-sm' %></td></tr>
+
+</table>
+</div>
+</div>
+</center>
+</body>
