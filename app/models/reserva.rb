@@ -1,11 +1,12 @@
 class Reserva < ActiveRecord::Base
+has_one :puntuacion
 belongs_to :couch
+belongs_to :user
 validate :validar_fecha_ocupada
 validate :validar_fecha_invalida
 default_scope -> { order("inicio") }
 
 @errors = nil
-
 
 def validar_fecha_ocupada
 	@errors.add(:inicio, "El couch está ocupado") unless self.couch.is_free?(self.inicio,self.fin)

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get  'couh_types/index'
+  get  'couch_types/index'
   get 'couches/index'
+  resources :puntuacions
   resources :couches
   resources :configurations
   resources :couch_types
@@ -15,8 +16,11 @@ Rails.application.routes.draw do
   get '/couchinn', to: 'main#index'
   #get '/serPremium', to: 'premium#index'
   resources :premiums
+  get '/puntuacion/recibidas', to: 'puntuacions#recibidas'
   get '/couch/reservas', to:'couches#indexreservas'
+  get '/couch/estadias', to:'couches#indexestadias'
 
+ # get '/configurations/registrados', to:'configurations#registrados'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

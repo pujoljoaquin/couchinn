@@ -1,0 +1,52 @@
+<center>
+		<container>
+		<div class="row">
+		<div class="col-md-6">
+			<h1  style="color:#6B8E23;" class="text-center"> Puntuaciones sobre mi</h1>
+		<table class = "table center">
+			<tr>
+				<th> Nombre</th>
+				<th> Apellido </th>
+				<th> Couch visitado</th>
+				<th  class="text-center"> Puntuación </th>
+			</tr>
+			<% if @reservasc.count == 0 %>
+				<tr> <td colspan="3"> No te han puntuado aún</td> </tr>
+			<% else %>
+				<% @reservasc.each do |reserva| %>
+						<tr> 
+							<td > <%= reserva.couch.user.nombre %> </td>
+							<td> <%= reserva.couch.user.apellido %> </td>
+							<td > <%= reserva.couch.nombre %> </td>
+							<td  class="text-center"> <%= Puntuacion.where(from_user:reserva.couch.user, user:current_user).first.valor %> 
+							</td>
+						</tr>
+				<%end%>
+			<%end%>
+		</table>
+		</div>
+		<div class="col-md-6">
+		<h1 style="color:#6B8E23;"> Puntuaciones de mis Couches</h1>
+		<table class = "table center">
+			<tr>
+				<th> Nombre del huesped </th>
+				<th> Nombre del Couch </th>
+				<th  class="text-center" > Puntuación </th>
+			</tr>
+			<% if @reservasu.count == 0 %>
+				<tr> <td colspan="3"> No hay puntuaciones sobre tus couches</td> </tr>
+			<% else %>
+				<% @reservasu.each do |reserva| %>
+						<tr> 
+							<td  > <%= reserva.user.nombre %> </td>
+							<td> <%= reserva.couch.nombre %> </td>
+							<td class="text-center"> <%= Puntuacion.where(from_user:reserva.user, couch:reserva.couch).first.valor %> 		</td>
+							
+						</tr>
+				<%end%>
+			<%end%>
+		</table>
+		</div>
+		</div>
+</container>
+</center>

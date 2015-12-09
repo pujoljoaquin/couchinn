@@ -1,0 +1,82 @@
+<center>
+		<container>
+		<div class="row">
+		<div class="col-md-6">
+			<h1  style="color:#6B8E23;" class="text-center"> Puntuar usuarios</h1>
+		<table class = "table center">
+			<tr>
+				<th> Nombre </th>
+				<th> Apellido </th>
+				<th> Couch de hospedaje</th>
+				<th> Puntuación </th>
+				<th> </th>
+
+			</tr>
+			<% if @reservasu.count == 0 %>
+				<tr> <td colspan="3"> No hay puntuaciones pendientes</td> </tr>
+			<% else %>
+			<% @reservasu.each do |reserva| %>
+					<tr> 
+						<td class="text-center"> <%= reserva.user.nombre %> </td>
+						<td class="text-center"> <%= reserva.user.apellido %> </td>
+						<td class="text-center"> <%= reserva.couch.nombre %> </td>
+						<% if Puntuacion.where(from_user:current_user, user:reserva.user).empty?%>
+							 <td  class="text-center"><%= form_for @puntuacionc do |f| %>
+								<%= f.number_field :valor, required: true, class: 'form-control', min: 1, max: 5 %>
+								<%= f.hidden_field :user_id, value: reserva.user.id %>
+								<%= f.hidden_field :from, value: current_user.id %>	</td>
+							<td>	<%= f.submit "Puntuar", class: 'btn-sml' %> </td>
+								
+							<% end %> 
+						<% else %>
+							<td  class="text-center"> <%= Puntuacion.where(from_user:current_user, user:reserva.user).first.valor %> 
+
+							</td>
+							<td></td>
+						<% end %> 
+						
+					</tr>
+			<%end%>
+			<%end%>
+		</table>
+		</div>
+		<div class="col-md-6">
+		<h1 style="color:#6B8E23;"> Puntuar Couches</h1>
+		<table class = "table center">
+			<tr>
+				<th> Nombre del Couch </th>
+				<th> Nombre del dueño </th>
+				<th  class="text-center"> Puntuación </th>
+				<th> </th>
+
+			</tr>
+			<% if @reservasc.count == 0 %>
+				<tr> <td colspan="3"> No hay puntuaciones pendientes</td> </tr>
+			<% else %>
+			<% @reservasc.each do |reserva| %>
+					<tr> 
+						<td  class="text-center"> <%= reserva.couch.nombre %> </td>
+						<td  class="text-center"> <%= reserva.couch.user.nombre %> </td>
+						<% if Puntuacion.where(from_user:current_user, couch:reserva.couch).empty? %>
+							 <td  class="text-center"><%= form_for @puntuacionc do |f| %>
+								<%= f.number_field :valor, required: true, class: 'form-control', min: 1, max: 5 %>
+								<%= f.hidden_field :couch_id, value: reserva.couch.id %>
+								<%= f.hidden_field :from, value: current_user.id %>	</td>
+							<td>	<%= f.submit "Puntuar", class: 'btn-sml' %> </td>
+								
+							<% end %> 
+						<% else %>
+							<td  class="text-center"> <%= Puntuacion.where(from_user:current_user, couch:reserva.couch).first.valor %> 
+
+							</td>
+							<td></td>
+						<% end %> 
+						
+					</tr>
+			<%end%>
+			<%end%>
+		</table>
+		</div>
+		</div>
+</container>
+</center>

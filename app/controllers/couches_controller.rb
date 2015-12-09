@@ -1,7 +1,16 @@
 class CouchesController < ApplicationController
 
 def show
+	#id = params[:id]
 	@couch = Couch.find(params[:id])
+#	Puntuacion.where('couch_id = ?', id).each do |p|
+#		total = p.valor + total
+#	end
+#	if Puntuacion.count == 0
+#		@couch.puntuacion = 0
+#	else
+#		@couch.puntuacion = total / Puntuacion.count
+#	end
 end	
 
 def edit
@@ -29,6 +38,19 @@ end
 
 def indexreservas
 	@couch = Couch.find(params[:couch_id])
+end
+
+def indexestadias
+	reservas_confirmadas = Reserva.all.where(confirmada:true)
+	reservas_concluidas = reservas_confirmadas.where('? > fin', Date.today)
+	mis_reservas = reservas_concluidas.where('user_id = ?', current_user.id)
+	resultado = []
+	Couch.all.each do |c|
+		if !mis_reservas.where('couch_id = ?', c.id).empty?
+			resultado << c
+		end
+	end
+	@couches = resultado
 end
 
 #	@couches = Couch.all.prioridades
@@ -69,6 +91,7 @@ end
 def create
 	@couch = Couch.new(params.require(:couch).permit(:nombre, :couch_type_id, :descripcion, :lugar, :capacidad, :imagen))
 	@couch.user = current_user
+
 	if @couch.save
 		redirect_to couches_path
 	else

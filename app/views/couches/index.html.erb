@@ -2,21 +2,21 @@
 <body class="bgcolor">
 
 <div class="container"> 
-<div class="row"> 
-<div class="jumbotron">
+  <div class="row"> 
+    <div class="jumbotron">
       <h2 style="color:white"> Búsqueda </h2>    
-     <%= form_tag couches_path , method: :get do %>
+      <%= form_tag couches_path , method: :get do %>
 
       <div class="col-md-3">
 
         <div style:"color:white">
-        <%= label_tag :lugar %>
+          <%= label_tag :lugar %>
         </div>
         <%= text_field_tag :lugar %>
        
         <div style:"color:white" >
         <br />
-        <%= label_tag :capacidad %>
+          <%= label_tag :capacidad %>
         </div>
         <%= number_field_tag :capacidad, nil, within: 1...101 %>
 
@@ -29,13 +29,13 @@
       <div class="col-md-3">
 
         <div style:"color:white" >
-        <%= label_tag :puntuacion %>
+          <%= label_tag :puntuacion %>
         </div>
         <%= number_field_tag :puntuacion, nil, within: 1...6 %>   
 
         <div style:"color:white" >
         <br />
-        <%= label_tag :tipo %>
+          <%= label_tag :tipo %>
         </div>
         <%= select_tag( :couch_type_id, options_for_select(CouchType.all.collect { |c| [ c.nombre, c.id]}), {include_blank: 'Todos'}) %>
 
@@ -44,14 +44,14 @@
       <div class="col-md-3">
 
         <div style:"color:white" >
-        <%= label_tag :fecha_ida  %>
+          <%= label_tag :fecha_ida  %>
         </div>
         <%= text_field_tag :ida, Date.today, type: :date %>
 
         
         <div style:"color:white" >
         <br />
-        <%= label_tag :fecha_vuelta  %>
+          <%= label_tag :fecha_vuelta  %>
         </div>
         <%= text_field_tag :vuelta, Date.today, type: :date %>
   
@@ -59,56 +59,38 @@
    
 
      
-     <%end%>
+      <%end%>
+    </div>
   </div>
-</div>
 </div>
 
 <h1 style="color:#6B8E23;" class="text-center"> <strong>Lista de Couches</strong></h1>
 <p></p>
   <div class="row">
-  <div class="col-md-6 col-md-offset-1">
-    <ul class="media-list">
-    <li class="media">
-    <% if @couches == nil %>
-      <p class="alert tipoRegistroCentro" style="color:red"><strong>No se han encontrado coincidencias</p>  
-    <% else %>
-    <% @couches.each do |couch| %>
+    <div class="col-md-6 col-md-offset-1">
+      <ul class="media-list">
+      <li class="media">
+      <% if @couches == nil %>
+        <p class="alert tipoRegistroCentro" style="color:red"><strong>No se han encontrado coincidencias</p>  
+      <% else %>
+      <% @couches.each do |couch| %>
 
-      <div class="media"> 
-      	<!-- VER href=# entre a y class -->
+        <div class="media"> 
+          <!-- VER href=# entre a y class -->
           <div class="pull-left">
-       	  	<img class="img-rounded" class="media-object" src= <%= couch.imagen %>  alt="imagen" style="width:200px;height:150px" >
+            <img class="img-rounded" class="media-object" src= <%= couch.imagen %>  alt="imagen" style="width:200px;height:150px" >
           </div>
           <div class="media-body">
             <h4 class="media-heading"><%= couch.nombre %> <small><i> <%= couch.lugar %></i></small></h4>
             <p> <%= couch.descripcion %> </p>
             <p> Capacidad: <%= couch.capacidad %></p>
             <p> Puntuacion: <%= couch.puntuacion %></p>        
-              <button class="btn btn-success btn-xs" type="button">
+            <button class="btn btn-success btn-xs" type="button">
                 <%= link_to 'Ver más', couch_path(couch.id), class: "btn btn-success btn-xs" %>
-              </button>
+            </button>
               
           </div>
-    <div class="col-md-6 col-md-offset-3">
-<ul class="media-list">
-<li class="media">
-
-
-   
-<% if @couches == nil %>
-  <p class="alert tipoRegistroCentro" style="color:red"><strong>No se han encontrado coincidencias</p>  
-<% else %>
-
-<% @couches.each do |couch| %>
-
-
-  <div class="media"> 
-  	<!-- VER href=# entre a y class -->
-      <div class="pull-left">
-   	  	<img class="img-rounded" class="media-object" src= <%= couch.imagen %>  alt="imagen" style="width:200px;height:150px" >
->>>>>>> aa002c93c863302c0af36161c16156b61783e9bc
-      </div>
+        </div>
       <% end %>
       <% end %>
       </li>
@@ -116,38 +98,20 @@
     </div>
     <% if !user_signed_in? || (current_user.esPremium == false) %>
    
-    <div class="col-md-3 col-md-offset-1" >
-      <container>
-        <div class="jumbotron">
+      <div class="col-md-3 col-md-offset-1" >
+        <container>
+          <div class="jumbotron">
 
-          <h2 class="tipoRegistroCentro">Conviertase en un usuario Premium ya!</h2>
+            <h2 class="tipoRegistroCentro">Conviertase en un usuario Premium ya!</h2>
 
-          <p class="tipoRegistroCentro"> Disfrute de los grandes beneficios de tener una cuenta Premium!!!</p>
-          <p class="tipoRegistroCentro"> Por un precio único tiene la posibildad de que sus couchs tengan prioridad ante la búsqueda.</p>
-          <p class="tipoRegistroCentro"> Recuerde que el pago se realiza una sola vez y.. SOS PREMIUM POR SIEMPRE!!!!!!</p>
-      
-          
-        </div>
-      </container>
-
-    </div>
-
-    
-
-    <% end %>
-  </div>
-</body>
-  <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
->>>>>>> 0d46f8b7b336d324fae2a99e1a7bf4f0d91216be
-      Ver más
-     </button>   
-     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title" id="myModalLabel">Hola este es mi modal waacho</h1>
+            <p class="tipoRegistroCentro"> Disfrute de los grandes beneficios de tener una cuenta Premium!!!</p>
+            <p class="tipoRegistroCentro"> Por un precio único tiene la posibildad de que sus couchs tengan prioridad ante la búsqueda.</p>
+            <p class="tipoRegistroCentro"> Recuerde que el pago se realiza una sola vez y.. SOS PREMIUM POR SIEMPRE!!!!!!</p>
+        
+            
           </div>
-        </div>
+        </container>
+
       </div>
+    <% end %>
     </div>
-      

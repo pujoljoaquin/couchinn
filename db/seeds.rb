@@ -34,18 +34,27 @@ departamento = CouchType.find_or_create_by(nombre:"Departamento", activo:true)
 mansion = CouchType.find_or_create_by(nombre:"Mansion", activo:false)
 cabana = CouchType.find_or_create_by(nombre:"Cabaña", activo:true)
 
+
 puts "Creo los Couches"
-Couch.find_or_create_by(couch_type:cabana, nombre: 'Casa en el Lago', descripcion: 'Hermosa vista al lago, muy comoda', lugar: 'Cordoba', user:susana, puntuacion: 4, capacidad: 2, disponibilidad: true, esPremium: false, imagen:"http://thumbs.dreamstime.com/t/casa-por-el-lago-8140207.jpg")
-Couch.find_or_create_by(couch_type:casa, nombre: "Choza de Cletus", descripcion: 'Chiquita, especial para juventud que quiera veranear y pasarla bien', lugar: "Villa Gesell", user:cletus, puntuacion: 1, capacidad: 10, disponibilidad: true, esPremium: false, imagen: "http://vignette2.wikia.nocookie.net/simpsons/images/4/44/Cletus_and_Children.jpg/revision/latest?cb=20110105211428")
-Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", descripcion: "Donde vive la presidente de la nación", lugar: "Capital Federal", puntuacion: 5, user:cristina, disponibilidad: false, capacidad: 1, esPremium: true)
+casa_lago = Couch.find_or_create_by(couch_type:cabana, nombre: 'Casa en el Lago', descripcion: 'Hermosa vista al lago, muy comoda', lugar: 'Cordoba', user:susana, capacidad: 2, disponibilidad: true, esPremium: false, imagen:"http://thumbs.dreamstime.com/t/casa-por-el-lago-8140207.jpg")
+choza = Couch.find_or_create_by(couch_type:casa, nombre: "Choza de Cletus", descripcion: 'Chiquita, especial para juventud que quiera veranear y pasarla bien', lugar: "Villa Gesell", user:cletus, capacidad: 10, disponibilidad: true, esPremium: false, imagen: "http://vignette2.wikia.nocookie.net/simpsons/images/4/44/Cletus_and_Children.jpg/revision/latest?cb=20110105211428")
+rosada = Couch.find_or_create_by(couch_type:mansion, nombre: "La Casa Rosada", descripcion: "Donde vive la presidente de la nación", lugar: "Capital Federal", user:cristina, disponibilidad: false, capacidad: 1, esPremium: true)
 
 
 puts "Creo las reservas"
-Reserva.find_or_create_by(inicio:"2016-01-01" , fin:"2016-01-15", user_id:cletus.id, couch_id:2, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-02-01" , fin:"2016-02-15", user_id:cristina.id, couch_id:3, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-01-10" , fin:"2016-01-20", user_id:cristina.id, couch_id:3, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-02-18" , fin:"2016-02-23", user_id:susana.id, couch_id:1, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-02-20" , fin:"2016-02-25", user_id:susana.id, couch_id:1, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-03-01" , fin:"2016-03-15", user_id:cletus.id, couch_id:2, confirmada:true);
-Reserva.find_or_create_by(inicio:"2016-01-10" , fin:"2016-01-19", user_id:cristina.id, couch_id:3, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-01-01", fin: "2016-01-15", user: cletus, couch: rosada, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-01", fin: "2016-02-15", user: cristina, couch: choza, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-01-10" , fin: "2016-01-20", user: cristina, couch: casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-18" , fin: "2016-02-23", user: susana, couch: choza, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-02-20", fin: "2016-02-25", user: susana, couch: rosada, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-03-01" , fin: "2016-03-15", user: cletus, couch: casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2016-01-10" , fin: "2016-01-19", user: cristina, couch: casa_lago, confirmada:true);
 
+puts "Creo reservas concluidas"
+Reserva.find_or_create_by(inicio: "2015-01-01", fin: "2015-01-15", user: cletus, couch: rosada, confirmada:true);
+Reserva.find_or_create_by(inicio: "2015-02-01", fin: "2015-02-15", user: cristina, couch: choza, confirmada:true);
+Reserva.find_or_create_by(inicio: "2015-01-10" , fin: "2015-01-20", user: cristina, couch: casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2015-02-18" , fin: "2015-02-23", user: susana, couch: choza, confirmada:true);
+Reserva.find_or_create_by(inicio: "2015-02-20", fin: "2015-02-25", user: susana, couch: rosada, confirmada:true);
+Reserva.find_or_create_by(inicio: "2015-03-01" , fin: "2015-03-15", user: cletus, couch: casa_lago, confirmada:true);
+Reserva.find_or_create_by(inicio: "2015-01-10" , fin: "2015-01-19", user: cristina, couch: casa_lago, confirmada:true);
